@@ -1,0 +1,172 @@
+[
+  {
+    "name": "map_camera_1",
+    "spawn": {
+      "x": 14.21,
+      "y": -7.15,
+      "z": 2.53,
+      "roll": 0.0,
+      "pitch": 5.0,
+      "yaw": 225.0
+    },
+    "image_size_x": 1280,
+    "image_size_y": 1024,
+    "fov": 120.0
+  },
+  {
+    "name": "map_camera_2",
+    "spawn": {
+      "x": 9.75,
+      "y": -7.15,
+      "z": 2.53,
+      "roll": 0.0,
+      "pitch": 5.0,
+      "yaw": 225.0
+    },
+    "image_size_x": 1280,
+    "image_size_y": 1024,
+    "fov": 120.0
+  },
+  {
+    "name": "map_camera_3",
+    "spawn": {
+      "x": 5.00,
+      "y": -7.15,
+      "z": 2.53,
+      "roll": 0.0,
+      "pitch": 5.0,
+      "yaw": 225.0
+    },
+    "image_size_x": 1280,
+    "image_size_y": 1024,
+    "fov": 120.0
+  },
+  {
+    "name": "map_camera_4",
+    "spawn": {
+      "x": -0.14,
+      "y": -7.15,
+      "z": 2.53,
+      "roll": 0.0,
+      "pitch": 5.0,
+      "yaw": 225.0
+    },
+    "image_size_x": 1280,
+    "image_size_y": 1024,
+    "fov": 120.0
+  },
+  {
+    "name": "map_camera_5",
+    "spawn": {
+      "x": -5.06,
+      "y": -7.15,
+      "z": 2.53,
+      "roll": 0.0,
+      "pitch": 5.0,
+      "yaw": 225.0
+    },
+    "image_size_x": 1280,
+    "image_size_y": 1024,
+    "fov": 120.0
+  },
+  {
+    "name": "map_camera_6",
+    "spawn": {
+      "x": -10.21,
+      "y": -7.15,
+      "z": 2.53,
+      "roll": 0.0,
+      "pitch": 5.0,
+      "yaw": 315.0
+    },
+    "image_size_x": 1280,
+    "image_size_y": 1024,
+    "fov": 120.0
+  },
+  {
+    "name": "map_camera_7",
+    "spawn": {
+        "x": -10.21,
+        "y": 7.5, 
+        "z": 2.53,
+		"roll": 0.0000,
+		"pitch": 0.0000,
+		"yaw": 45.0 
+    },
+    "image_size_x": 1280,
+    "image_size_y": 1024,
+    "fov": 120.0
+},
+{
+	"name": "map_camera_8",
+	"spawn": {
+	    "x": -5.06,  
+	    "y": 7.5, 
+	    "z": 2.53,
+		"roll": 0.0000,
+		"pitch": 0.0000,
+		"yaw": 45.0 
+	},
+	"image_size_x": 1280,
+	"image_size_y": 1024,
+	"fov": 120.0
+},
+{
+	"name": "map_camera_9",
+	"spawn": {
+	    "x": -0.14,  
+	    "y": 7.5, 
+	    "z": 2.53,
+		"roll": 0.0000,
+		"pitch": 0.0000,
+		"yaw": 45.0 
+	},
+	"image_size_x": 1280,
+	"image_size_y": 1024,
+	"fov": 120.0
+},
+{
+	"name": "map_camera_10",
+	"spawn": {
+	    "x": 5.00, 
+	    "y": 7.5, 
+	    "z": 2.53,
+		"roll": 0.0000,
+		"pitch": 0.0000,
+		"yaw": 45.0 
+	},
+	"image_size_x": 1280,
+	"image_size_y": 1024,
+	"fov": 120.0
+},
+{
+
+	"name": "map_camera_11",
+	"spawn": {
+	    "x": 9.75, 
+	    "y": 7.5, 
+	    "z": 2.53,
+		"roll": 0.0000,
+		"pitch": 0.0000,
+		"yaw": 45.0 
+	},
+	"image_size_x": 1280,
+	"image_size_y": 1024,
+	"fov": 120.0
+},
+{
+	"name": "map_camera_12",
+	"spawn": {
+	    "x": 14.21, 
+	    "y": 7.5, 
+	    "z": 2.53,
+		"roll": 0.0000,
+		"pitch": 0.0000,
+		"yaw": 135.0 
+	},
+	"image_size_x": 1280,
+	"image_size_y": 1024,
+	"fov": 120.0
+}
+]
+

@@ -1,0 +1,8 @@
+--num-stereo (N): How many stereo pairs to create. Each pair has a left and right RGB camera.
+--num-mono (M): How many single/mono cameras to create.
+--num-lidars (L): How many LiDARs to create.
+--stereo-offset: The offset in meters between left and right cameras. (e.g., 0.03 = 3 cm)
+--enable-depth: If provided, a depth camera is added for each (stereo or mono) setup.
+--enable-imu: If provided, an IMU is added for each (stereo or mono) setup.
+--camera-settings-file: A JSON file describing each camera’s spawn location, image resolution, etc.
+--lidar-settings-file  A JSON file describing each lidars’s spawn location, number of points, etc.

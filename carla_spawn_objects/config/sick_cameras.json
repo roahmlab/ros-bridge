@@ -1,0 +1,731 @@
+{
+    "objects": 
+    [
+        {
+            "type": "sensor.pseudo.traffic_lights",
+            "id": "traffic_lights",
+            "spawn_point": {
+                "x": 0.0, 
+                "y": 0.0, 
+                "z": 1.0
+            }
+        },
+        {
+            "type": "sensor.pseudo.objects",
+            "id": "objects",
+            "spawn_point": {
+                "x": 0.0, 
+                "y": 0.0, 
+                "z": 1.0
+            }
+        },
+        {
+            "type": "sensor.pseudo.actor_list",
+            "id": "actor_list",
+            "spawn_point": {
+                "x": 0.0, 
+                "y": 0.0, 
+                "z": 1.0
+            }
+        },
+        {
+            "type": "sensor.pseudo.markers",
+            "id": "markers",
+            "spawn_point": {
+                "x": 0.0, 
+                "y": 0.0, 
+                "z": 1.0
+            }
+        },
+        {
+            "type": "sensor.pseudo.opendrive_map",
+            "id": "map",
+            "spawn_point": {
+                "x": 0.0, 
+                "y": 0.0, 
+                "z": 1.0
+            }
+        },
+                        "x": 14.21, 
+                "y": -7.15, 
+                "z": 2.53,
+				"roll": 0.0000,
+				"pitch": 5.0,
+				"yaw": 225.0
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_1_left",
+            "spawn_point": {
+                        "x": 14.21, 
+                "y": -7.15, 
+                "z": 2.53,
+				"roll": 0.0000,
+				"pitch": 5.0,
+				"yaw": 225.0
+            },
+            "image_size_x": 1024,
+            "image_size_y": 576,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_1_right",
+            "spawn_point": {
+                "x": 14.2368, 
+                "y": -7.15, 
+                "z": 2.53,
+				"roll": 0.0000,
+				"pitch": 5.0,
+				"yaw": 225.0
+            },
+            "image_size_x": 1024,
+            "image_size_y": 576,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.camera.depth",
+            "id": "map_camera_1_depth",
+            "spawn_point": {
+                "x": 14.2234, 
+                "z": 2.53,
+				"roll": 0.0000,
+				"pitch": 5.0,
+				"yaw": 225.0
+            },
+            "fov": 120.0,
+            "image_size_x": 1024,
+            "image_size_y": 576,
+            "lens_circle_falloff": 0.5,
+            "lens_circle_multiplier": 1.0,
+            "lens_k": 0.1,
+            "lens_kcube": 0.1,
+            "lens_x_size": 0.05,
+            "lens_y_size": 0.05,
+            
+            "sensor_tick": 0.05,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.other.imu",
+            "id": "map_camera_1_imu",
+            "spawn_point": {
+                "x": 14.2234, 
+                "z": 2.53,
+				"roll": 0.0000,
+				"pitch": 5.0,
+				"yaw": 225.0
+            },
+            "noise_accel_stddev_x": 0.02,
+            "noise_accel_stddev_y": 0.02,
+            "noise_accel_stddev_z": 0.02,
+            "noise_gyro_bias_x": 0.001,
+            "noise_gyro_bias_y": 0.001,
+            "noise_gyro_bias_z": 0.001,
+            "noise_gyro_stddev_x": 0.01,
+            "noise_gyro_stddev_y": 0.01,
+            "noise_gyro_stddev_z": 0.01,
+            "noise_seed": 124,
+            "role_name": "imu",
+            "sensor_tick": 0.01
+        },
+        
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_2_left",
+            "spawn_point": {
+                "x": 9.75, 
+                "y": -7.15, 
+                "z": 2.53,
+				"roll": 0.0000,
+				"pitch": 5.0,
+				"yaw": 225.0
+            },
+            "image_size_x": 1024,
+            "image_size_y": 576,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_2_right",
+            "spawn_point": {
+                "x": 9.7768, 
+                "y": -7.15, 
+                "z": 2.53,
+				"roll": 0.0000,
+				"pitch": 5.0,
+				"yaw": 225.0
+            },
+            "image_size_x": 1024,
+            "image_size_y": 576,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.camera.depth",
+            "id": "map_camera_2_depth",
+            "spawn_point": {
+                "x": 9.7634, 
+                "y": -7.15, 
+                "z": 2.53,
+				"roll": 0.0000,
+				"pitch": 5.0,
+				"yaw": 225.0
+            },
+            "fov": 120.0,
+            "image_size_x": 1024,
+            "image_size_y": 576,
+            "lens_circle_falloff": 0.5,
+            "lens_circle_multiplier": 1.0,
+            "lens_k": 0.1,
+            "lens_kcube": 0.1,
+            "lens_x_size": 0.05,
+            "lens_y_size": 0.05,
+            
+            "sensor_tick": 0.05,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.other.imu",
+            "id": "map_camera_2_imu",
+            "spawn_point": {
+                "x": 9.7634, 
+                "y": -7.15, 
+                "z": 2.53,
+				"roll": 0.0000,
+				"pitch": 5.0,
+				"yaw": 225.0
+            },
+            "noise_accel_stddev_x": 0.02,
+            "noise_accel_stddev_y": 0.02,
+            "noise_accel_stddev_z": 0.02,
+            "noise_gyro_bias_x": 0.001,
+            "noise_gyro_bias_y": 0.001,
+            "noise_gyro_bias_z": 0.001,
+            "noise_gyro_stddev_x": 0.01,
+            "noise_gyro_stddev_y": 0.01,
+            "noise_gyro_stddev_z": 0.01,
+            "noise_seed": 125,
+            "role_name": "imu",
+            "sensor_tick": 0.01
+        },
+        
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_3_left",
+            "spawn_point": {
+                "x": 5.00, 
+                "y": -7.15, 
+                "z": 2.53,
+				"roll": 0.0000,
+				"pitch": 5.0,
+				"yaw": 225.0
+            },
+            "image_size_x": 1024,
+            "image_size_y": 576,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_3_right",
+            "spawn_point": {
+                "x": 5.00, 
+                "y": -7.15, 
+                "z": 2.53,
+				"roll": 0.0000,
+				"pitch": 5.0,
+				"yaw": 225.0
+            },
+            "image_size_x": 1024,
+            "image_size_y": 576,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.camera.depth",
+            "id": "map_camera_3_depth",
+            "spawn_point": {
+                "x": 5.00, 
+                "y": -7.15, 
+                "z": 2.53,
+				"roll": 0.0000,
+				"pitch": 5.0,
+				"yaw": 225.0
+            },
+            "fov": 120.0,
+            "image_size_x": 1024,
+            "image_size_y": 576,
+            "lens_circle_falloff": 0.5,
+            "lens_circle_multiplier": 1.0,
+            "lens_k": 0.1,
+            "lens_kcube": 0.1,
+            "lens_x_size": 0.05,
+            "lens_y_size": 0.05,
+            
+            "sensor_tick": 0.05,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.other.imu",
+            "id": "map_camera_3_imu",
+            "spawn_point": {
+                "x": 5.00, 
+                "y": -7.15, 
+                "z": 2.53,
+				"roll": 0.0000,
+				"pitch": 5.0,
+				"yaw": 225.0
+            },
+            "noise_accel_stddev_x": 0.02,
+            "noise_accel_stddev_y": 0.02,
+            "noise_accel_stddev_z": 0.02,
+            "noise_gyro_bias_x": 0.001,
+            "noise_gyro_bias_y": 0.001,
+            "noise_gyro_bias_z": 0.001,
+            "noise_gyro_stddev_x": 0.01,
+            "noise_gyro_stddev_y": 0.01,
+            "noise_gyro_stddev_z": 0.01,
+            "noise_seed": 126,
+            "role_name": "imu",
+            "sensor_tick": 0.01
+        },
+        
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_4_left",
+            "spawn_point": {
+                "x": -0.14, 
+                "y": -7.15, 
+                "z": 2.53,
+				"roll": 0.0000,
+				"pitch": 5.0,
+				"yaw": 225.0
+            },
+            "image_size_x": 1024,
+            "image_size_y": 576,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_4_right",
+            "spawn_point": {
+                "x": -0.14, 
+                "y": -7.15, 
+                "z": 2.53,
+				"roll": 0.0000,
+				"pitch": 5.0,
+				"yaw": 225.0
+            },
+            "image_size_x": 1024,
+            "image_size_y": 576,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.camera.depth",
+            "id": "map_camera_4_depth",
+            "spawn_point": {
+                "x": -0.14, 
+                "y": -7.15, 
+                "z": 2.53,
+				"roll": 0.0000,
+				"pitch": 5.0,
+				"yaw": 225.0
+            },
+            "fov": 120.0,
+            "image_size_x": 1024,
+            "image_size_y": 576,
+            "lens_circle_falloff": 0.5,
+            "lens_circle_multiplier": 1.0,
+            "lens_k": 0.1,
+            "lens_kcube": 0.1,
+            "lens_x_size": 0.05,
+            "lens_y_size": 0.05,
+            
+            "sensor_tick": 0.05,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.other.imu",
+            "id": "map_camera_4_imu",
+            "spawn_point": {
+                "x": -0.14, 
+                "y": -7.15, 
+                "z": 2.53,
+				"roll": 0.0000,
+				"pitch": 5.0,
+				"yaw": 225.0
+            },
+            "noise_accel_stddev_x": 0.02,
+            "noise_accel_stddev_y": 0.02,
+            "noise_accel_stddev_z": 0.02,
+            "noise_gyro_bias_x": 0.001,
+            "noise_gyro_bias_y": 0.001,
+            "noise_gyro_bias_z": 0.001,
+            "noise_gyro_stddev_x": 0.01,
+            "noise_gyro_stddev_y": 0.01,
+            "noise_gyro_stddev_z": 0.01,
+            "noise_seed": 127,
+            "role_name": "imu",
+            "sensor_tick": 0.01
+        },
+        
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_5_left",
+            "spawn_point": {
+                "x": -5.06, 
+                "y": -7.15, 
+                "z": 2.53,
+				"roll": 0.0000,
+				"pitch": 5.0,
+				"yaw": 225.0
+            },
+            "image_size_x": 1024,
+            "image_size_y": 576,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_5_right",
+            "spawn_point": {
+                "x": -5.06, 
+                "y": -7.15, 
+                "z": 2.53,
+				"roll": 0.0000,
+				"pitch": 5.0,
+				"yaw": 225.0
+            },
+            "image_size_x": 1024,
+            "image_size_y": 576,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.camera.depth",
+            "id": "map_camera_5_depth",
+            "spawn_point": {
+                "x": -5.06, 
+                "y": -7.15, 
+                "z": 2.53,
+				"roll": 0.0000,
+				"pitch": 5.0,
+				"yaw": 225.0
+            },
+            "fov": 120.0,
+            "image_size_x": 1024,
+            "image_size_y": 576,
+            "lens_circle_falloff": 0.5,
+            "lens_circle_multiplier": 1.0,
+            "lens_k": 0.1,
+            "lens_kcube": 0.1,
+            "lens_x_size": 0.05,
+            "lens_y_size": 0.05,
+            
+            "sensor_tick": 0.05,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.other.imu",
+            "id": "map_camera_5_imu",
+            "spawn_point": {
+                "x": -5.06, 
+                "y": -7.15, 
+                "z": 2.53,
+				"roll": 0.0000,
+				"pitch": 5.0,
+				"yaw": 225.0
+            },
+            "noise_accel_stddev_x": 0.02,
+            "noise_accel_stddev_y": 0.02,
+            "noise_accel_stddev_z": 0.02,
+            "noise_gyro_bias_x": 0.001,
+            "noise_gyro_bias_y": 0.001,
+            "noise_gyro_bias_z": 0.001,
+            "noise_gyro_stddev_x": 0.01,
+            "noise_gyro_stddev_y": 0.01,
+            "noise_gyro_stddev_z": 0.01,
+            "noise_seed": 128,
+            "role_name": "imu",
+            "sensor_tick": 0.01
+        },
+        
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_6_left",
+            "spawn_point": {
+                "x": -10.21,  
+                "y": -7.15, 
+                "z": 2.53,
+				"roll": 0.0000,
+				"pitch": 5.0,
+				"yaw": 315.0
+            },
+            "image_size_x": 1024,
+            "image_size_y": 576,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_6_right",
+            "spawn_point": {
+                "x": -10.21,  
+                "y": -7.15, 
+                "z": 2.53,
+				"roll": 0.0000,
+				"pitch": 5.0,
+				"yaw": 315.0
+            },
+            "image_size_x": 1024,
+            "image_size_y": 576,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.camera.depth",
+            "id": "map_camera_6_depth",
+            "spawn_point": {
+                "x": -10.21,  
+                "y": -7.15, 
+                "z": 2.53,
+				"roll": 0.0000,
+				"pitch": 5.0,
+				"yaw": 315.0
+            },
+            "fov": 120.0,
+            "image_size_x": 1024,
+            "image_size_y": 576,
+            "lens_circle_falloff": 0.5,
+            "lens_circle_multiplier": 1.0,
+            "lens_k": 0.1,
+            "lens_kcube": 0.1,
+            "lens_x_size": 0.05,
+            "lens_y_size": 0.05,
+            
+            "sensor_tick": 0.05,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.other.imu",
+            "id": "map_camera_6_imu",
+            "spawn_point": {
+                "x": -10.21,  
+                "y": -7.15, 
+                "z": 2.53,
+				"roll": 0.0000,
+				"pitch": 5.0,
+				"yaw": 315.0
+            },
+            "noise_accel_stddev_x": 0.02,
+            "noise_accel_stddev_y": 0.02,
+            "noise_accel_stddev_z": 0.02,
+            "noise_gyro_bias_x": 0.001,
+            "noise_gyro_bias_y": 0.001,
+            "noise_gyro_bias_z": 0.001,
+            "noise_gyro_stddev_x": 0.01,
+            "noise_gyro_stddev_y": 0.01,
+            "noise_gyro_stddev_z": 0.01,
+            "noise_seed": 129,
+            "role_name": "imu",
+            "sensor_tick": 0.01
+        }
+        
+        {
+            "type": "sensor.lidar.ray_cast",
+            "id": "map_lidar_1",
+            "spawn_point": {
+                "x": 11.66, 
+                "y": -2.0, 
+                "z": 6.0,
+                "roll": 0.0, 
+                "pitch": 0.0, 
+                "yaw": 0.0
+            },
+            "range": 100,
+            "channels": 32,
+            "points_per_second": 576000,
+            "upper_fov": 2.81,
+            "lower_fov": -89,
+            "rotation_frequency": 10,
+            "noise_stddev": 0.1,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.lidar.ray_cast",
+            "id": "map_lidar_2",
+            "spawn_point": {
+                "x": 4.66,
+                "y": -2.0, 
+                "z": 6.0,
+                "roll": 0.0, 
+                "pitch": 0.0, 
+                "yaw": 0.0
+            },
+            "range": 100,
+            "channels": 32,
+            "points_per_second": 576000,
+            "upper_fov": 2.81,
+            "lower_fov": -89,
+            "rotation_frequency": 10,
+            "noise_stddev": 0.1,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.lidar.ray_cast",
+            "id": "map_lidar_3",
+            "spawn_point": {
+                "x": 4.66, 
+                "y": 2.0, 
+                "z": 6.0,
+                "roll": 0.0, 
+                "pitch": 0.0, 
+                "yaw": 0.0
+            },
+            "range": 100,
+            "channels": 32,
+            "points_per_second": 576000,
+            "upper_fov": 2.81,
+            "lower_fov": -89,
+            "rotation_frequency": 10,
+            "noise_stddev": 0.1,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.lidar.ray_cast",
+            "id": "map_lidar_4",
+            "spawn_point": {
+                "x": 11.66, 
+                "y": 2.0, 
+                "z": 6.0,
+                "roll": 0.0, 
+                "pitch": 0.0, 
+                "yaw": 0.0
+            },
+            "range": 100,
+            "channels": 32,
+            "points_per_second": 576000,
+            "upper_fov": 2.81,
+            "lower_fov": -89,
+            "rotation_frequency": 10,
+            "noise_stddev": 0.1,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        }
+    ]
+}
+

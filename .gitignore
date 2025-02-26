@@ -11,3 +11,6 @@ build.gradle
 build/
 install/
 log/
+
+*.mp4
+*.avi

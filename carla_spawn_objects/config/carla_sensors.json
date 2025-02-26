@@ -1,0 +1,739 @@
+{
+    "objects": [
+        {
+            "type": "sensor.pseudo.traffic_lights",
+            "id": "traffic_lights",
+            "spawn_point": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            }
+        },
+        {
+            "type": "sensor.pseudo.objects",
+            "id": "objects",
+            "spawn_point": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            }
+        },
+        {
+            "type": "sensor.pseudo.actor_list",
+            "id": "actor_list",
+            "spawn_point": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            }
+        },
+        {
+            "type": "sensor.pseudo.markers",
+            "id": "markers",
+            "spawn_point": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            }
+        },
+        {
+            "type": "sensor.pseudo.opendrive_map",
+            "id": "map",
+            "spawn_point": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            }
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_1_mono",
+            "spawn_point": {
+                "x": 14.21,
+                "y": -7.15,
+                "z": 2.53,
+                "roll": 0.0,
+                "pitch": 5.0,
+                "yaw": 225.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 1024,
+            "enable_postprocess_effects": "true",
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.camera.depth",
+            "id": "map_camera_1_depth",
+            "spawn_point": {
+                "x": 14.21,
+                "y": -7.15,
+                "z": 2.53,
+                "roll": 0.0,
+                "pitch": 5.0,
+                "yaw": 225.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 1024,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ],
+            "lens_circle_falloff": 0.5,
+            "lens_circle_multiplier": 1.0,
+            "lens_k": 0.1,
+            "lens_kcube": 0.1,
+            "lens_x_size": 0.05,
+            "lens_y_size": 0.05,
+            "sensor_tick": 0.05
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_2_mono",
+            "spawn_point": {
+                "x": 9.75,
+                "y": -7.15,
+                "z": 2.53,
+                "roll": 0.0,
+                "pitch": 5.0,
+                "yaw": 225.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 1024,
+                        "enable_postprocess_effects": "false",
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.camera.depth",
+            "id": "map_camera_2_depth",
+            "spawn_point": {
+                "x": 9.75,
+                "y": -7.15,
+                "z": 2.53,
+                "roll": 0.0,
+                "pitch": 5.0,
+                "yaw": 225.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 1024,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ],
+            "lens_circle_falloff": 0.5,
+            "lens_circle_multiplier": 1.0,
+            "lens_k": 0.1,
+            "lens_kcube": 0.1,
+            "lens_x_size": 0.05,
+            "lens_y_size": 0.05,
+            "sensor_tick": 0.05
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_3_mono",
+            "spawn_point": {
+                "x": 5.0,
+                "y": -7.15,
+                "z": 2.53,
+                "roll": 0.0,
+                "pitch": 5.0,
+                "yaw": 225.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 1024,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.camera.depth",
+            "id": "map_camera_3_depth",
+            "spawn_point": {
+                "x": 5.0,
+                "y": -7.15,
+                "z": 2.53,
+                "roll": 0.0,
+                "pitch": 5.0,
+                "yaw": 225.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 1024,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ],
+            "lens_circle_falloff": 0.5,
+            "lens_circle_multiplier": 1.0,
+            "lens_k": 0.1,
+            "lens_kcube": 0.1,
+            "lens_x_size": 0.05,
+            "lens_y_size": 0.05,
+            "sensor_tick": 0.05
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_4_mono",
+            "spawn_point": {
+                "x": -0.14,
+                "y": -7.15,
+                "z": 2.53,
+                "roll": 0.0,
+                "pitch": 5.0,
+                "yaw": 225.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 1024,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.camera.depth",
+            "id": "map_camera_4_depth",
+            "spawn_point": {
+                "x": -0.14,
+                "y": -7.15,
+                "z": 2.53,
+                "roll": 0.0,
+                "pitch": 5.0,
+                "yaw": 225.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 1024,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ],
+            "lens_circle_falloff": 0.5,
+            "lens_circle_multiplier": 1.0,
+            "lens_k": 0.1,
+            "lens_kcube": 0.1,
+            "lens_x_size": 0.05,
+            "lens_y_size": 0.05,
+            "sensor_tick": 0.05
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_5_mono",
+            "spawn_point": {
+                "x": -5.06,
+                "y": -7.15,
+                "z": 2.53,
+                "roll": 0.0,
+                "pitch": 5.0,
+                "yaw": 225.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 1024,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.camera.depth",
+            "id": "map_camera_5_depth",
+            "spawn_point": {
+                "x": -5.06,
+                "y": -7.15,
+                "z": 2.53,
+                "roll": 0.0,
+                "pitch": 5.0,
+                "yaw": 225.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 1024,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ],
+            "lens_circle_falloff": 0.5,
+            "lens_circle_multiplier": 1.0,
+            "lens_k": 0.1,
+            "lens_kcube": 0.1,
+            "lens_x_size": 0.05,
+            "lens_y_size": 0.05,
+            "sensor_tick": 0.05
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_6_mono",
+            "spawn_point": {
+                "x": -10.21,
+                "y": -7.15,
+                "z": 2.53,
+                "roll": 0.0,
+                "pitch": 5.0,
+                "yaw": 315.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 1024,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.camera.depth",
+            "id": "map_camera_6_depth",
+            "spawn_point": {
+                "x": -10.21,
+                "y": -7.15,
+                "z": 2.53,
+                "roll": 0.0,
+                "pitch": 5.0,
+                "yaw": 315.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 1024,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ],
+            "lens_circle_falloff": 0.5,
+            "lens_circle_multiplier": 1.0,
+            "lens_k": 0.1,
+            "lens_kcube": 0.1,
+            "lens_x_size": 0.05,
+            "lens_y_size": 0.05,
+            "sensor_tick": 0.05
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_7_mono",
+            "spawn_point": {
+                "x": -10.21,
+                "y": 7.5,
+                "z": 2.53,
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": 45.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 1024,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.camera.depth",
+            "id": "map_camera_7_depth",
+            "spawn_point": {
+                "x": -10.21,
+                "y": 7.5,
+                "z": 2.53,
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": 45.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 1024,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ],
+            "lens_circle_falloff": 0.5,
+            "lens_circle_multiplier": 1.0,
+            "lens_k": 0.1,
+            "lens_kcube": 0.1,
+            "lens_x_size": 0.05,
+            "lens_y_size": 0.05,
+            "sensor_tick": 0.05
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_8_mono",
+            "spawn_point": {
+                "x": -5.06,
+                "y": 7.5,
+                "z": 2.53,
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": 45.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 1024,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.camera.depth",
+            "id": "map_camera_8_depth",
+            "spawn_point": {
+                "x": -5.06,
+                "y": 7.5,
+                "z": 2.53,
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": 45.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 1024,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ],
+            "lens_circle_falloff": 0.5,
+            "lens_circle_multiplier": 1.0,
+            "lens_k": 0.1,
+            "lens_kcube": 0.1,
+            "lens_x_size": 0.05,
+            "lens_y_size": 0.05,
+            "sensor_tick": 0.05
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_9_mono",
+            "spawn_point": {
+                "x": -0.14,
+                "y": 7.5,
+                "z": 2.53,
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": 45.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 1024,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.camera.depth",
+            "id": "map_camera_9_depth",
+            "spawn_point": {
+                "x": -0.14,
+                "y": 7.5,
+                "z": 2.53,
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": 45.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 1024,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ],
+            "lens_circle_falloff": 0.5,
+            "lens_circle_multiplier": 1.0,
+            "lens_k": 0.1,
+            "lens_kcube": 0.1,
+            "lens_x_size": 0.05,
+            "lens_y_size": 0.05,
+            "sensor_tick": 0.05
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_10_mono",
+            "spawn_point": {
+                "x": 5.0,
+                "y": 7.5,
+                "z": 2.53,
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": 45.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 1024,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.camera.depth",
+            "id": "map_camera_10_depth",
+            "spawn_point": {
+                "x": 5.0,
+                "y": 7.5,
+                "z": 2.53,
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": 45.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 1024,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ],
+            "lens_circle_falloff": 0.5,
+            "lens_circle_multiplier": 1.0,
+            "lens_k": 0.1,
+            "lens_kcube": 0.1,
+            "lens_x_size": 0.05,
+            "lens_y_size": 0.05,
+            "sensor_tick": 0.05
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_11_mono",
+            "spawn_point": {
+                "x": 9.75,
+                "y": 7.5,
+                "z": 2.53,
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": 45.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 1024,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.camera.depth",
+            "id": "map_camera_11_depth",
+            "spawn_point": {
+                "x": 9.75,
+                "y": 7.5,
+                "z": 2.53,
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": 45.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 1024,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ],
+            "lens_circle_falloff": 0.5,
+            "lens_circle_multiplier": 1.0,
+            "lens_k": 0.1,
+            "lens_kcube": 0.1,
+            "lens_x_size": 0.05,
+            "lens_y_size": 0.05,
+            "sensor_tick": 0.05
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_12_mono",
+            "spawn_point": {
+                "x": 14.21,
+                "y": 7.5,
+                "z": 2.53,
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": 135.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 1024,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.camera.depth",
+            "id": "map_camera_12_depth",
+            "spawn_point": {
+                "x": 14.21,
+                "y": 7.5,
+                "z": 2.53,
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": 135.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 1024,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ],
+            "lens_circle_falloff": 0.5,
+            "lens_circle_multiplier": 1.0,
+            "lens_k": 0.1,
+            "lens_kcube": 0.1,
+            "lens_x_size": 0.05,
+            "lens_y_size": 0.05,
+            "sensor_tick": 0.05
+        },
+        {
+            "type": "sensor.lidar.ray_cast",
+            "id": "map_lidar_dome1",
+            "spawn_point": {
+                "x": 11.66,
+                "y": -2.0,
+                "z": 6.0,
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": 0.0
+            },
+            "range": 100,
+            "channels": 32,
+            "points_per_second": 576000,
+            "upper_fov": 2.81,
+            "lower_fov": -89.0,
+            "rotation_frequency": 10,
+            "noise_stddev": 0.1,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.lidar.ray_cast",
+            "id": "map_lidar_dome2",
+            "spawn_point": {
+                "x": 4.66,
+                "y": -2.0,
+                "z": 6.0,
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": 0.0
+            },
+            "range": 100,
+            "channels": 32,
+            "points_per_second": 576000,
+            "upper_fov": 2.81,
+            "lower_fov": -89.0,
+            "rotation_frequency": 10,
+            "noise_stddev": 0.1,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.lidar.ray_cast",
+            "id": "map_lidar_dome3",
+            "spawn_point": {
+                "x": 4.66,
+                "y": 2.0,
+                "z": 6.0,
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": 0.0
+            },
+            "range": 100,
+            "channels": 32,
+            "points_per_second": 576000,
+            "upper_fov": 2.81,
+            "lower_fov": -89.0,
+            "rotation_frequency": 10,
+            "noise_stddev": 0.1,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        },
+        {
+            "type": "sensor.lidar.ray_cast",
+            "id": "map_lidar_dome4",
+            "spawn_point": {
+                "x": 11.66,
+                "y": 2.0,
+                "z": 6.0,
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": 0.0
+            },
+            "range": 100,
+            "channels": 32,
+            "points_per_second": 576000,
+            "upper_fov": 2.81,
+            "lower_fov": -89.0,
+            "rotation_frequency": 10,
+            "noise_stddev": 0.1,
+            "attached_objects": [
+                {
+                    "type": "actor.pseudo.control",
+                    "id": "control"
+                }
+            ]
+        }
+    ]
+}

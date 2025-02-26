@@ -1,0 +1,607 @@
+{   
+    "objects": 
+    [
+        {
+            "type": "sensor.pseudo.traffic_lights",
+            "id": "traffic_lights"
+        },
+        {
+            "type": "sensor.pseudo.objects",
+            "id": "objects"
+        },
+        {
+            "type": "sensor.pseudo.actor_list",
+            "id": "actor_list"
+        },
+        {
+            "type": "sensor.pseudo.markers",
+            "id": "markers"
+        },
+        {
+            "type": "sensor.pseudo.opendrive_map",
+            "id": "map"
+        },
+         {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_video",
+            "spawn_point": {
+                "x": 0.0, 
+                "y": 0.0, 
+                "z": 0.0,
+				"roll": 0.0000,
+				"pitch": 5.6786,
+				"yaw": -7.1210
+            },
+            "image_size_x": 2560,
+            "image_size_y": 1440,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+					"type": "actor.pseudo.control",
+					"id": "control"
+				}
+            ]
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_1",
+            "spawn_point": {
+                "x": -32.63, 
+                "y": -46.93, 
+                "z": 3.00,
+				"roll": 0.0000,
+				"pitch": -15.0,
+				"yaw": 230.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 720,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+					"type": "actor.pseudo.control",
+					"id": "control"
+				}
+            ]
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_2",
+            "spawn_point": {
+                "x": -32.63, 
+                "y": -59.94, 
+                "z": 3.00,
+				"roll": 0.0000,
+				"pitch": -15.0,
+				"yaw": 230.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 720,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+					"type": "actor.pseudo.control",
+					"id": "control"
+				}
+            ]
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_3",
+            "spawn_point": {
+                "x": -32.63, 
+                "y": -66.07, 
+                "z": 3.00,
+				"roll": 0.0000,
+				"pitch": -15.0,
+				"yaw": 230.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 720,
+            "fov": 120.0,
+            "attached_objects": [
+                                {
+					"type": "actor.pseudo.control",
+					"id": "control"
+				}
+            ]
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_4",
+            "spawn_point": {
+                "x": -32.63, 
+                "y": -75.98,
+                "z": 3.00,
+				"roll": 0.0000,
+				"pitch": -15.0,
+				"yaw": 230.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 720,
+            "fov": 120.0,
+            "attached_objects": [
+                                {
+					"type": "actor.pseudo.control",
+					"id": "control"
+				}
+            ]
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_5",
+            "spawn_point": {
+                "x": -32.63, 
+                "y": -86.11,
+                "z": 3.00,
+				"roll": 0.0000,
+				"pitch": -15.0,
+				"yaw": 230.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 720,
+            "fov": 120.0,
+            "attached_objects": [
+                                {
+					"type": "actor.pseudo.control",
+					"id": "control"
+				}
+            ]
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_6",
+            "spawn_point": {
+                "x": -32.63, 
+                "y": -96.09,
+                "z": 3.00,
+				"roll": 0.0000,
+				"pitch": -15.0,
+				"yaw": 230.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 720,
+            "fov": 120.0,
+            "attached_objects": [
+                                {
+					"type": "actor.pseudo.control",
+					"id": "control"
+				}
+            ]
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_7",
+            "spawn_point": {
+                "x": -69.20, 
+                "y": -96.09, 
+                "z": 3.00,
+				"roll": 0.0000,
+				"pitch": -15.0,
+				"yaw": 30.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 720,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+					"type": "actor.pseudo.control",
+					"id": "control"
+				}
+            ]
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_8",
+            "spawn_point": {
+                "x": -69.20, 
+                "y": -86.44, 
+                "z": 3.00,
+				"roll": 0.0000,
+				"pitch": -15.0,
+				"yaw": 30.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 720,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+					"type": "actor.pseudo.control",
+					"id": "control"
+				}
+            ]
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_9",
+            "spawn_point": {
+                "x": -69.20, 
+                "y": -76.48, 
+                "z": 3.00,
+				"roll": 0.0000,
+				"pitch": -15.0,
+				"yaw": 30.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 720,
+            "fov": 120.0,
+            "attached_objects": [
+                                {
+					"type": "actor.pseudo.control",
+					"id": "control"
+				}
+            ]
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_10",
+            "spawn_point": {
+                "x": -69.20, 
+                "y": -66.42, 
+                "z": 3.00,
+				"roll": 0.0000,
+				"pitch": -15.0,
+				"yaw": 30.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 720,
+            "fov": 120.0,
+            "attached_objects": [
+                                {
+					"type": "actor.pseudo.control",
+					"id": "control"
+				}
+            ]
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_11",
+            "spawn_point": {
+                "x": -69.20, 
+                "y": -56.2409, 
+                "z": 3.00,
+				"roll": 0.0000,
+				"pitch": -15.0,
+				"yaw": 30.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 720,
+            "fov": 120.0,
+            "attached_objects": [
+                                {
+					"type": "actor.pseudo.control",
+					"id": "control"
+				}
+            ]
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_12",
+            "spawn_point": {
+                "x": -69.20, 
+                "y": -46.50, 
+                "z": 3.00,
+				"roll": 0.0000,
+				"pitch": -15.0,
+				"yaw": 310.0
+            },
+            "image_size_x": 1280,
+            "image_size_y": 720,
+            "fov": 120.0,
+            "attached_objects": [
+                                {
+					"type": "actor.pseudo.control",
+					"id": "control"
+				}
+            ]
+        },
+
+        
+        {
+            "type": "sensor.lidar.ray_cast",
+            "id": "map_lidar_1",
+            "spawn_point": {
+                "x": -64.34, 
+                "y": -57.44, 
+                "z": 5.08, 
+                "roll": 0.0, 
+                "pitch": 0.0, 
+                "yaw": 0.0
+            },
+            "range": 100,
+            "channels": 32,
+            "points_per_second": 576000,
+            "upper_fov": 2.81,
+            "lower_fov": -89,
+            "rotation_frequency": 10,
+            "noise_stddev": 0.1,
+            "attached_objects": [
+                                {
+					"type": "actor.pseudo.control",
+					"id": "control"
+				}
+            ]
+        },
+        {
+            "type": "sensor.lidar.ray_cast",
+            "id": "map_lidar_2",
+            "spawn_point": {
+                "x": -39.0004, 
+                "y": -57.44, 
+                "z": 5.08, 
+                "roll": 0.0, 
+                "pitch": 0.0, 
+                "yaw": 0.0
+            },
+            "range": 100,
+            "channels": 32,
+            "points_per_second": 576000,
+            "upper_fov": 2.81,
+            "lower_fov": -89,
+            "rotation_frequency": 10,
+            "noise_stddev": 0.1,
+            "attached_objects": [
+                                {
+					"type": "actor.pseudo.control",
+					"id": "control"
+				}
+            ]
+        },
+        {
+            "type": "sensor.lidar.ray_cast",
+            "id": "map_lidar_3",
+            "spawn_point": {
+                "x": -51.24, 
+                "y": -57.44, 
+                "z": 5.08, 
+                "roll": 0.0, 
+                "pitch": 0.0, 
+                "yaw": 0.0
+            },
+            "range": 100,
+            "channels": 32,
+            "points_per_second": 576000,
+            "upper_fov": 2.81,
+            "lower_fov": -89,
+            "rotation_frequency": 10,
+            "noise_stddev": 0.1,
+            "attached_objects": [
+                                {
+					"type": "actor.pseudo.control",
+					"id": "control"
+				}
+            ]
+        },
+                {
+            "type": "sensor.lidar.ray_cast",
+            "id": "map_lidar_4",
+            "spawn_point": {
+                "x": -64.34, 
+                "y": -74.00, 
+                "z": 5.08, 
+                "roll": 0.0, 
+                "pitch": 0.0, 
+                "yaw": 0.0
+            },
+            "range": 100,
+            "channels": 32,
+            "points_per_second": 576000,
+            "upper_fov": 2.81,
+            "lower_fov": -89,
+            "rotation_frequency": 10,
+            "noise_stddev": 0.1,
+            "attached_objects": [
+                                {
+					"type": "actor.pseudo.control",
+					"id": "control"
+				}
+            ]
+        },
+        {
+            "type": "sensor.lidar.ray_cast",
+            "id": "map_lidar_5",
+            "spawn_point": {
+                "x": -51.24, 
+                "y": -74.00, 
+                "z": 5.08, 
+                "roll": 0.0, 
+                "pitch": 0.0, 
+                "yaw": 0.0
+            },
+            "range": 100,
+            "channels": 32,
+            "points_per_second": 576000,
+            "upper_fov": 2.81,
+            "lower_fov": -89,
+            "rotation_frequency": 10,
+            "noise_stddev": 0.1,
+            "attached_objects": [
+                                {
+					"type": "actor.pseudo.control",
+					"id": "control"
+				}
+            ]
+        },
+        {
+            "type": "sensor.lidar.ray_cast",
+            "id": "map_lidar_6",
+            "spawn_point": {
+                "x": -51.24, 
+                "y": -74.00, 
+                "z": 5.08, 
+                "roll": 0.0, 
+                "pitch": 0.0, 
+                "yaw": 0.0
+            },
+            "range": 100,
+            "channels": 32,
+            "points_per_second": 576000,
+            "upper_fov": 2.81,
+            "lower_fov": -89,
+            "rotation_frequency": 10,
+            "noise_stddev": 0.1,
+            "attached_objects": [
+                                {
+					"type": "actor.pseudo.control",
+					"id": "control"
+				}
+            ]
+        },
+        
+        
+                {
+            "type": "sensor.lidar.ray_cast",
+            "id": "map_lidar_7",
+            "spawn_point": {
+                "x": -64.34, 
+                "y": -90.00, 
+                "z": 5.08, 
+                "roll": 0.0, 
+                "pitch": 0.0, 
+                "yaw": 0.0
+            },
+            "range": 100,
+            "channels": 32,
+            "points_per_second": 576000,
+            "upper_fov": 2.81,
+            "lower_fov": -89,
+            "rotation_frequency": 10,
+            "noise_stddev": 0.1,
+            "attached_objects": [
+                                {
+					"type": "actor.pseudo.control",
+					"id": "control"
+				}
+            ]
+        },
+        {
+            "type": "sensor.lidar.ray_cast",
+            "id": "map_lidar_8",
+            "spawn_point": {
+                "x": -39.0004, 
+                "y": -90.00, 
+                "z": 5.08, 
+                "roll": 0.0, 
+                "pitch": 0.0, 
+                "yaw": 0.0
+            },
+            "range": 100,
+            "channels": 32,
+            "points_per_second": 576000,
+            "upper_fov": 2.81,
+            "lower_fov": -89,
+            "rotation_frequency": 10,
+            "noise_stddev": 0.1,
+            "attached_objects": [
+                                {
+					"type": "actor.pseudo.control",
+					"id": "control"
+				}
+            ]
+        },
+        {
+            "type": "sensor.lidar.ray_cast",
+            "id": "map_lidar_9",
+            "spawn_point": {
+                "x": -51.24, 
+                "y": -90.00, 
+                "z": 5.08, 
+                "roll": 0.0, 
+                "pitch": 0.0, 
+                "yaw": 0.0
+            },
+            "range": 100,
+            "channels": 32,
+            "points_per_second": 576000,
+            "upper_fov": 2.81,
+            "lower_fov": -89,
+            "rotation_frequency": 10,
+            "noise_stddev": 0.1,
+            "attached_objects": [
+                                {
+					"type": "actor.pseudo.control",
+					"id": "control"
+				}
+            ]
+        },
+        
+        
+                {
+            "type": "sensor.lidar.ray_cast",
+            "id": "map_lidar_10",
+            "spawn_point": {
+                "x": -64.34, 
+                "y": -102.00, 
+                "z": 5.08, 
+                "roll": 0.0, 
+                "pitch": 0.0, 
+                "yaw": 0.0
+            },
+            "range": 100,
+            "channels": 32,
+            "points_per_second": 576000,
+            "upper_fov": 2.81,
+            "lower_fov": -89,
+            "rotation_frequency": 10,
+            "noise_stddev": 0.1,
+            "attached_objects": [
+                                {
+					"type": "actor.pseudo.control",
+					"id": "control"
+				}
+            ]
+        },
+        {
+            "type": "sensor.lidar.ray_cast",
+            "id": "map_lidar_11",
+            "spawn_point": {
+                "x": -39.0004, 
+                "y": -102.0, 
+                "z": 5.08, 
+                "roll": 0.0, 
+                "pitch": 0.0, 
+                "yaw": 0.0
+            },
+            "range": 100,
+            "channels": 32,
+            "points_per_second": 576000,
+            "upper_fov": 2.81,
+            "lower_fov": -89,
+            "rotation_frequency": 10,
+            "noise_stddev": 0.1,
+            "attached_objects": [
+                                {
+					"type": "actor.pseudo.control",
+					"id": "control"
+				}
+            ]
+        },
+        {
+            "type": "sensor.lidar.ray_cast",
+            "id": "map_lidar_12",
+            "spawn_point": {
+                "x": -51.24, 
+                "y": -120.00, 
+                "z": 5.08, 
+                "roll": 0.0, 
+                "pitch": 0.0, 
+                "yaw": 0.0
+            },
+            "range": 100,
+            "channels": 32,
+            "points_per_second": 576000,
+            "upper_fov": 2.81,
+            "lower_fov": -89,
+            "rotation_frequency": 10,
+            "noise_stddev": 0.1,
+            "attached_objects": [
+                                {
+					"type": "actor.pseudo.control",
+					"id": "control"
+				}
+            ]
+        }
+        
+            
+    ]
+}
+

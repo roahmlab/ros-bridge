@@ -1,0 +1,75 @@
+[
+    {
+        "name": "map_lidar_dome1",
+        "spawn": {
+            "x": 11.66,
+            "y": -2.0,
+            "z": 6.0,
+            "roll": 0.0,
+            "pitch": 0.0,
+            "yaw": 0.0
+        },
+        "range": 100,
+        "channels": 32,
+        "points_per_second": 576000,
+        "upper_fov": 2.81,
+        "lower_fov": -89.0,
+        "rotation_frequency": 10,
+        "noise_stddev": 0.1
+    },
+    {
+        "name": "map_lidar_dome2",
+        "spawn": {
+            "x": 4.66,
+            "y": -2.0,
+            "z": 6.0,
+            "roll": 0.0,
+            "pitch": 0.0,
+            "yaw": 0.0
+        },
+        "range": 100,
+        "channels": 32,
+        "points_per_second": 576000,
+        "upper_fov": 2.81,
+        "lower_fov": -89.0,
+        "rotation_frequency": 10,
+        "noise_stddev": 0.1
+    },
+    {
+        "name": "map_lidar_dome3",
+        "spawn": {
+            "x": 4.66,
+            "y": 2.0,
+            "z": 6.0,
+            "roll": 0.0,
+            "pitch": 0.0,
+            "yaw": 0.0
+        },
+        "range": 100,
+        "channels": 32,
+        "points_per_second": 576000,
+        "upper_fov": 2.81,
+        "lower_fov": -89.0,
+        "rotation_frequency": 10,
+        "noise_stddev": 0.1
+    },
+    {
+        "name": "map_lidar_dome4",
+        "spawn": {
+            "x": 11.66,
+            "y": 2.0,
+            "z": 6.0,
+            "roll": 0.0,
+            "pitch": 0.0,
+            "yaw": 0.0
+        },
+        "range": 100,
+        "channels": 32,
+        "points_per_second": 576000,
+        "upper_fov": 2.81,
+        "lower_fov": -89.0,
+        "rotation_frequency": 10,
+        "noise_stddev": 0.1
+    }
+]
+

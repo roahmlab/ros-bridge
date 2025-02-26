@@ -3,58 +3,63 @@
     [
         {
             "type": "sensor.pseudo.traffic_lights",
-            "id": "traffic_lights"
-        },
-        {
-            "type": "sensor.pseudo.objects",
-            "id": "objects"
-        },
-        {
-            "type": "sensor.pseudo.actor_list",
-            "id": "actor_list"
-        },
-        {
-            "type": "sensor.pseudo.markers",
-            "id": "markers"
-        },
-        {
-            "type": "sensor.pseudo.opendrive_map",
-            "id": "map"
-        },
-         {
-            "type": "sensor.camera.rgb",
-            "id": "map_camera_video",
+            "id": "traffic_lights",
             "spawn_point": {
                 "x": 0.0, 
                 "y": 0.0, 
-                "z": 3.0,
-				"roll": 0.0000,
-				"pitch": 0.0,
-				"yaw": 0.0
-            },
-            "image_size_x": 4096,
-            "image_size_y": 2160,
-            "fov": 120.0,
-            "attached_objects": [
-                {
-					"type": "actor.pseudo.control",
-					"id": "control"
-				}
-            ]
+                "z": 1.0
+            }
+        },
+        {
+            "type": "sensor.pseudo.objects",
+            "id": "objects",
+            "spawn_point": {
+                "x": 0.0, 
+                "y": 0.0, 
+                "z": 1.0
+            }
+        },
+        {
+            "type": "sensor.pseudo.actor_list",
+            "id": "actor_list",
+            "spawn_point": {
+                "x": 0.0, 
+                "y": 0.0, 
+                "z": 1.0
+            }
+        },
+        {
+            "type": "sensor.pseudo.markers",
+            "id": "markers",
+            "spawn_point": {
+                "x": 0.0, 
+                "y": 0.0, 
+                "z": 1.0
+            }
+        },
+        {
+            "type": "sensor.pseudo.opendrive_map",
+            "id": "map",
+            "spawn_point": {
+                "x": 0.0, 
+                "y": 0.0, 
+                "z": 1.0
+            }
         },
         {
             "type": "sensor.camera.rgb",
             "id": "map_camera_1",
             "spawn_point": {
-                "x": -31.5, 
-                "y": 47.0, 
-                "z": 3.0,
+                "x": 14.21, 
+                "y": -7.15, 
+                "z": 2.53,
 				"roll": 0.0000,
 				"pitch": 5.0,
 				"yaw": 225.0
             },
             "image_size_x": 4096,
             "image_size_y": 2160,
+            "enable_postprocess_effects": "true",
             "fov": 120.0,
             "attached_objects": [
                 {
@@ -67,15 +72,16 @@
             "type": "sensor.camera.rgb",
             "id": "map_camera_2",
             "spawn_point": {
-                "x": -31.5, 
-                "y": 60.0, 
-                "z": 3.0,
+                "x": 9.75, 
+                "y": -7.15, 
+                "z": 2.53,
 				"roll": 0.0000,
 				"pitch": 5.0,
 				"yaw": 225.0
             },
             "image_size_x": 4096,
             "image_size_y": 2160,
+                        "enable_postprocess_effects": "true",
             "fov": 120.0,
             "attached_objects": [
                 {
@@ -88,18 +94,19 @@
             "type": "sensor.camera.rgb",
             "id": "map_camera_3",
             "spawn_point": {
-                "x": -31.5, 
-                "y": 72.0, 
-                "z": 3.0,
+                "x": 5.00, 
+                "y": -7.15, 
+                "z": 2.53,
 				"roll": 0.0000,
 				"pitch": 5.0,
 				"yaw": 225.0
             },
             "image_size_x": 4096,
             "image_size_y": 2160,
+                        "enable_postprocess_effects": "true",
             "fov": 120.0,
             "attached_objects": [
-                {
+                                {
 					"type": "actor.pseudo.control",
 					"id": "control"
 				}
@@ -109,18 +116,19 @@
             "type": "sensor.camera.rgb",
             "id": "map_camera_4",
             "spawn_point": {
-                "x": -31.5, 
-                "y": 84.0, 
-                "z": 3.0,
+                "x": -0.14, 
+                "y": -7.15, 
+                "z": 2.53,
 				"roll": 0.0000,
 				"pitch": 5.0,
 				"yaw": 225.0
             },
             "image_size_x": 4096,
             "image_size_y": 2160,
+                        "enable_postprocess_effects": "false",
             "fov": 120.0,
             "attached_objects": [
-                {
+                                {
 					"type": "actor.pseudo.control",
 					"id": "control"
 				}
@@ -130,18 +138,19 @@
             "type": "sensor.camera.rgb",
             "id": "map_camera_5",
             "spawn_point": {
-                "x": -31.5, 
-                "y": 96.0, 
-                "z": 3.0,
+                "x": -5.06, 
+                "y": -7.15, 
+                "z": 2.53,
 				"roll": 0.0000,
 				"pitch": 5.0,
 				"yaw": 225.0
             },
             "image_size_x": 4096,
             "image_size_y": 2160,
+                        "enable_postprocess_effects": "false",
             "fov": 120.0,
             "attached_objects": [
-                {
+                                {
 					"type": "actor.pseudo.control",
 					"id": "control"
 				}
@@ -151,24 +160,24 @@
             "type": "sensor.camera.rgb",
             "id": "map_camera_6",
             "spawn_point": {
-                "x": -31.5, 
-                "y": 106.0, 
-                "z": 3.0,
+                "x": -10.21,  
+                "y": -7.15, 
+                "z": 2.53,
 				"roll": 0.0000,
 				"pitch": 5.0,
-				"yaw": 135.0
+				"yaw": 315.0
             },
             "image_size_x": 4096,
             "image_size_y": 2160,
+                        "enable_postprocess_effects": "false",
             "fov": 120.0,
             "attached_objects": [
-                {
+                                {
 					"type": "actor.pseudo.control",
 					"id": "control"
 				}
             ]
         }
-            
     ]
 }
 
