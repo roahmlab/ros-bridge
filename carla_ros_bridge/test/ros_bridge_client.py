@@ -62,7 +62,7 @@ class TestClock(unittest.TestCase):
         msg = rospy.wait_for_message(
             "/carla/ego_vehicle/vehicle_info", CarlaEgoVehicleInfo, timeout=TIMEOUT)
         self.assertNotEqual(msg.id, 0)
-        self.assertEqual(msg.type, "vehicle.tesla.model3")
+        self.assertEqual(msg.type, "vehicle.forklift.forklift")
         self.assertEqual(msg.rolename, "ego_vehicle")
         self.assertEqual(len(msg.wheels), 4)
         self.assertNotEqual(msg.max_rpm, 0.0)

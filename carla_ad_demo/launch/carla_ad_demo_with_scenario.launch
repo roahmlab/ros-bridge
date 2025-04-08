@@ -14,7 +14,7 @@
 
   <!-- ego vehicle parameter -->
   <arg name="role_name" default="ego_vehicle"/> <!-- role name of the ego vehicle (used for identification in many nodes) -->
-  <arg name="vehicle_filter" default="vehicle.tesla.model3"/> <!-- which vehicle type to use for the ego. See blueprint library for others -->
+  <arg name="vehicle_filter" default="vehicle.forklift.forklift"/> <!-- which vehicle type to use for the ego. See blueprint library for others -->
   <arg name="avoid_risk" default="True"/> <!-- should the agent avoid crashs and respect red traffic lights? -->
 
   <!-- ===================================================== -->

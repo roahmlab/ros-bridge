@@ -22,7 +22,7 @@
             "id": "map"
         },
         {
-            "type": "vehicle.tesla.model3",
+            "type": "vehicle.forklift.forklift",
             "id": "ego_vehicle",
             "sensors": 
             [

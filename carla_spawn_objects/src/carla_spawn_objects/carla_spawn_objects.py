@@ -209,7 +209,7 @@ class CarlaSpawnObjects(CompatibleNode):
                     raise NameError
                 sensor_names.append(sensor_name)
 
-                if attached_vehicle_id is None and "pseudo" not in sensor_type:
+                if attached_vehicle_id is None:
                     spawn_point = sensor_spec.pop("spawn_point")
                     sensor_transform = self.create_spawn_point(
                         spawn_point.pop("x"),
@@ -254,8 +254,9 @@ class CarlaSpawnObjects(CompatibleNode):
                     raise RuntimeError(response.error_string)
 
                 if attached_objects:
-                    # spawn the attached objects
-                    self.setup_sensors(attached_objects, response_id)
+                    # Allow pseudo-sensors to attach to this sensor
+                    for attached_object in attached_objects:
+                        self.setup_sensors([attached_object], response_id)
 
                 if attached_vehicle_id is None:
                     self.global_sensors.append(response_id)
@@ -282,7 +283,8 @@ class CarlaSpawnObjects(CompatibleNode):
         spawn_point.position.x = x
         spawn_point.position.y = y
         spawn_point.position.z = z
-        quat = euler2quat(math.radians(roll), math.radians(pitch), math.radians(yaw))
+        quat = euler2quat(math.radians(roll), math.radians(pitch), math.radians(-yaw))
+
 
         spawn_point.orientation.w = quat[0]
         spawn_point.orientation.x = quat[1]

@@ -68,7 +68,7 @@ def generate_test_description():
         ),
         launch.actions.DeclareLaunchArgument(
             name='vehicle_filter',
-            default_value='vehicle.tesla.model3'
+            default_value='vehicle.forklift.forklift'
         ),
         launch.actions.DeclareLaunchArgument(
             name='ego_vehicle_role_names',
@@ -168,7 +168,7 @@ class TestClock(unittest.TestCase):
                 "/carla/ego_vehicle/vehicle_info", CarlaEgoVehicleInfo, timeout=TIMEOUT,
                 qos_profile=QoSProfile(depth=1, durability=DurabilityPolicy.TRANSIENT_LOCAL))
             self.assertNotEqual(msg.id, 0)
-            self.assertEqual(msg.type, "vehicle.tesla.model3")
+            self.assertEqual(msg.type, "vehicle.forklift.forklift")
             self.assertEqual(msg.rolename, "ego_vehicle")
             self.assertEqual(len(msg.wheels), 4)
             self.assertNotEqual(msg.max_rpm, 0.0)

@@ -8,7 +8,13 @@
 """
 provide functions to control actors
 """
+import rospy
+import sys
+egg_path = '/home/carla/carla/PythonAPI/carla/dist/carla-0.9.14-py3.8-linux-x86_64.egg'
 
+sys.path.append(egg_path)
+
+import carla
 import math
 
 import numpy

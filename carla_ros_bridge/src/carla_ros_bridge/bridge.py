@@ -13,13 +13,16 @@ Class that handle communication between CARLA and ROS
 
 import os
 import pkg_resources
-try:
-    import queue
-except ImportError:
-    import Queue as queue
+
+import queue
+
 import sys
 from distutils.version import LooseVersion
 from threading import Thread, Lock, Event
+
+egg_path = '/home/carla/carla/PythonAPI/carla/dist/carla-0.9.14-py3.8-linux-x86_64.egg'
+
+sys.path.append(egg_path)
 
 import carla
 
@@ -262,7 +265,7 @@ class CarlaRosBridge(CompatibleNode):
                             self._expected_ego_vehicle_control_command_ids.append(
                                 actor_id)
 
-            self.actor_factory.update_available_objects()
+            self.actor_factory.update_available_objects(self.status_publisher.frame)
             frame = self.carla_world.tick()
 
             world_snapshot = self.carla_world.get_snapshot()
@@ -413,10 +416,6 @@ def main(args=None):
 
         # check carla version
         dist = pkg_resources.get_distribution("carla")
-        # if LooseVersion(dist.version) != LooseVersion(CarlaRosBridge.CARLA_VERSION):
-        #     carla_bridge.logfatal("CARLA python module version {} required. Found: {}".format(
-        #         CarlaRosBridge.CARLA_VERSION, dist.version))
-        #     sys.exit(1)
 
         if LooseVersion(carla_client.get_server_version()) != \
            LooseVersion(carla_client.get_client_version()):
