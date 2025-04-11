@@ -1,4 +1,11 @@
+#!/usr/bin/env python
 import rospy
+
+import sys
+egg_path = '/home/carla/CarlaDepotAutomation/carla-0.9.14-py3.8-linux-x86_64.egg'
+
+sys.path.append(egg_path)
+
 import carla
 import numpy as np
 from nav_msgs.msg import Odometry

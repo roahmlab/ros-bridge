@@ -7,7 +7,7 @@ import random
 import sys
 
 # Make sure your CARLA egg is appended
-egg_path = '/home/carla/carla/PythonAPI/carla/dist/carla-0.9.14-py3.8-linux-x86_64.egg'
+egg_path = '/home/carla/CarlaDepotAutomation/carla-0.9.14-py3.8-linux-x86_64.egg'
 sys.path.append(egg_path)
 
 import carla
