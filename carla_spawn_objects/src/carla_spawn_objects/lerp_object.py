@@ -5,22 +5,17 @@ import sys
 import time
 import argparse
 import logging
+import sys
+egg_path = '/home/carla/CarlaDepotAutomation/carla-0.9.14-py3.8-linux-x86_64.egg'
 
+sys.path.append(egg_path)
 
-
-try:
-    sys.path.append(glob.glob('../carla/dist/carla-*%d.%d-%s.egg' % (
-        sys.version_info.major,
-        sys.version_info.minor,
-        'win-amd64' if os.name == 'nt' else 'linux-x86_64'))[0])
-except IndexError:
-    pass
-
+import rospy
 import carla
 import json
 import math
 import os
-import rospy
+
 
 from transforms3d.euler import euler2quat
 from carla_msgs.msg import CarlaActorList
