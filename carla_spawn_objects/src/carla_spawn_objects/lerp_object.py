@@ -111,7 +111,7 @@ def transform_callback(msg, args):
     new_transform = ros_to_carla_transform(msg)
     try:
         actor.set_transform(new_transform)
-        rospy.loginfo("Updated actor {} transform to: {}".format(actor.id, new_transform))
+        rospy.logdebug("Updated actor {} transform to: {}".format(actor.id, new_transform))
     except Exception as e:
         rospy.logerr("Failed to update actor transform: {}".format(e))
 
@@ -139,8 +139,9 @@ def main():
                            help='Initial yaw in degrees')
     argparser.add_argument('--ros-transform-topic', type=str, default='/object_transform',
                            help='ROS topic to subscribe for transform messages (default: /object_transform)')
+    argparser.add_argument('--wait-for-carla-status', action='store_true', default=False)
 
-    args = argparser.parse_args()
+    args, unknown = argparser.parse_known_args()
 
     logging.basicConfig(format='%(levelname)s: %(message)s', level=logging.INFO)
     client = carla.Client(args.host, args.port)
@@ -156,23 +157,61 @@ def main():
                                       yaw=args.initial_yaw)
     initial_transform = carla.Transform(initial_location, initial_rotation)
 
+    # Initialize ROS node and subscribe to the transform topic
+    rospy.init_node('carla_transform_controller', anonymous=True)
+
+    if args.wait_for_carla_status:        
+        from collections import deque
+        from carla_msgs.msg import CarlaStatus
+        timestamps = deque(maxlen=20)
+        
+        def cb(msg):
+            nonlocal timestamps
+            timestamps.append(rospy.Time.now().to_sec())
+        
+        sub = rospy.Subscriber('/carla/status', CarlaStatus, cb)
+        rate = rospy.Rate(10)
+        stable_since = None
+
+        while not rospy.is_shutdown():
+            if len(timestamps) >= 10:
+                intervals = [j - i for i, j in zip(timestamps, list(timestamps)[1:])]
+                avg_rate = 1.0 / (sum(intervals) / len(intervals)) if intervals else 0.0
+                if avg_rate >= 5.0:
+                    if stable_since is None:
+                        stable_since = time.time()
+                    elif time.time() - stable_since >= 1.0:
+                        rospy.loginfo("Detected /carla/status at >5Hz for 1s. Continuing.")
+                        break
+                else:
+                    stable_since = None
+            rate.sleep()
+        sub.unregister()
+
     # Spawn the dynamic actor at the initial transform
     dynamic_actor = spawn_dynamic_actor(world, args.spawn_blueprint_name, initial_transform)
     if not dynamic_actor:
         logging.error("Failed to spawn the dynamic actor. Exiting.")
         return
+    
+    def shutdown_hook():
+        if dynamic_actor is not None:
+            try:
+                dynamic_actor.destroy()
+                rospy.loginfo("Destroyed dynamic actor ID: {}".format(dynamic_actor.id))
+            except Exception as e:
+                rospy.logerr("Failed to destroy actor: {}".format(e))
 
-    # Initialize ROS node and subscribe to the transform topic
-    rospy.init_node('carla_transform_controller', anonymous=True)
     # The lambda allows us to pass additional arguments to the callback (the actor)
     rospy.Subscriber(args.ros_transform_topic, TransformStamped,
                      callback=lambda msg: transform_callback(msg, {'actor': dynamic_actor}))
     
     rospy.loginfo("ROS node started. Listening on topic '{}' for transform messages.".format(args.ros_transform_topic))
-    
+
     # Keep the node running until shutdown
     rospy.spin()
-
+    shutdown_hook()
+    
 if __name__ == '__main__':
     try:
         main()

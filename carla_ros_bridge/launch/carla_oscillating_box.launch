@@ -1,0 +1,16 @@
+<launch>
+  <!-- Launch carla_ros_bridge with args -->
+  <arg name="town" default="WarehouseGroundTent"/>
+  <include file="$(find carla_ros_bridge)/launch/carla_ros_bridge.launch">
+    <arg name="synchronous_mode" value="true"/>
+    <arg name="town" value="$(arg town)"/>
+    <arg name="fixed_delta_seconds" value="0.01"/>
+  </include>
+
+  <!-- Run lerp_object.py -->
+  <node pkg="carla_spawn_objects" type="lerp_object.py" name="lerp_object" output="screen" 
+    args="--spawn-blueprint-name static.prop.box01 --wait-for-carla-status"/>
+
+  <!-- Run oscillate_transform.py -->
+  <node pkg="carla_spawn_objects" type="oscillate_transform.py" name="oscillate_transform" output="screen"/>
+</launch>
