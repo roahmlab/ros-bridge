@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 import rospy
 import sys
+from typing import Union
+
 egg_path = '/home/carla/CarlaDepotAutomation/carla-0.9.14-py3.8-linux-x86_64.egg'
 
 sys.path.append(egg_path)
@@ -140,6 +142,39 @@ class VehicleController:
 
     def set_vehicle(self, vehicle):
         self.vehicle = vehicle
+
+    def follow_trajectory(self, trajectory):
+        """
+        Follows a trajectory defined by waypoints for an SE2 mobile robot.
+
+        Args:
+        trajectory : list of tuples
+            A list of waypoints where each waypoint is represented as a tuple (x, y, yaw).
+            - x (float): The x-coordinate of the waypoint in meters.
+            - y (float): The y-coordinate of the waypoint in meters.
+            - yaw (float): The orientation (yaw angle) of the vehicle at the waypoint in radians.
+        """
+        if self.vehicle is None:
+            rospy.logerr("Vehicle not set. Use set_vehicle() to set the vehicle.")
+            return
+        
+        for position in trajectory:
+            pub = rospy.Publisher('/carla/ego_vehicle/vehicle_control_cmd', CarlaEgoVehicleControl, queue_size=10)
+            rospy.Subscriber('/carla/ego_vehicle/odometry', Odometry, self.odometry_callback)
+            rate = rospy.Rate(20)  # 20 Hz for responsive control
+
+            x, y, yaw = position
+            control_msg = self.compute_control(x, y, yaw)
+
+            # Update vehicle transform
+            target_location = carla.Location(x, y)
+            target_rotation = carla.Rotation(pitch=0.0, yaw=np.degrees(yaw), roll=0.0)
+            
+            self.vehicle.set_transform(carla.Transform(target_location, target_rotation))
+            
+            pub.publish(control_msg)
+
+            rate.sleep()
 
     def start_moving(self):
         pub = rospy.Publisher('/carla/ego_vehicle/vehicle_control_cmd', CarlaEgoVehicleControl, queue_size=10)
