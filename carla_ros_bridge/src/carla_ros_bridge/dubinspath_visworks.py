@@ -140,27 +140,32 @@ class VehicleController:
         self.current_pose = msg.pose.pose
         self.pose_received = True
 
+    def normalize_angle(self, angle):
+        return (angle + np.pi) % (2 * np.pi) - np.pi
+
+    def draw_yaw_arrow(self, x, y, yaw, z=0.3, length=2.0, color=carla.Color(255, 0, 0), life_time=0.5):
+        """
+        Visualize the yaw direction at a specific (x, y) by drawing an arrow.
+        """
+        start = carla.Location(x=x, y=y, z=z)
+        end = carla.Location(x=x + length * np.cos(yaw), y=y + length * np.sin(yaw), z=z)
+        self.world.debug.draw_arrow(start, end, thickness=0.1, arrow_size=0.3, color=color, life_time=life_time)
+
+
     def set_vehicle(self, vehicle):
         self.vehicle = vehicle
 
     def move_and_visualize(self, trajectory_file):
         """
         Moves the vehicle along a trajectory loaded from a .npz file and visualizes spheres
-        centered at the ego vehicle's position 10 time steps ahead.
-
-        Parameters:
-        ----------
-        trajectory_file : str
-            Path to the .npz file containing the trajectory as a numpy array of shape (num_times, 3),
-            where each row is (x, y, heading).
+        and yaw vectors along the trajectory.
         """
-        # Load trajectory from .npz file
         data = np.load(trajectory_file)
         trajectory = data['ego_traj']
 
         pub = rospy.Publisher('/carla/ego_vehicle/vehicle_control_cmd', CarlaEgoVehicleControl, queue_size=10)
         rospy.Subscriber('/carla/ego_vehicle/odometry', Odometry, self.odometry_callback)
-        rate = rospy.Rate(100)  # 20 Hz for responsive control
+        rate = rospy.Rate(100)
 
         while not self.pose_received and not rospy.is_shutdown():
             rospy.loginfo("Waiting for vehicle's current pose...")
@@ -169,53 +174,77 @@ class VehicleController:
         if self.pose_received:
             rospy.loginfo("Vehicle pose received. Starting movement.")
 
-            waypoint_threshold = 1.0  # Distance threshold to consider waypoint reached
-            x_prev = trajectory[0,0]
-            y_prev = trajectory[0,1]
-            # yaw_prev = trajectory[i,2]
-            num_traj_skip = 1  # Number of waypoints to skip in the trajectory
+            num_traj_skip = 1
             y_offset = -2.0
-            for i in range(1, len(trajectory), num_traj_skip):  # Skip waypoints based on num_traj_skip
-                
-                x, y = trajectory[i,:2]
-                y += y_offset  # Adjust y position by y_offset
-                if i == 0:
-                   yaw = 0
+            yaw_prev = None
+            flip_threshold = np.radians(20)  # 90 degrees
+
+            for i in range(1, len(trajectory) - 1, num_traj_skip):  # leave room to access i+1
+                x, y = trajectory[i, :2]
+                y += y_offset
+
+                # Windowed yaw smoothing
+                half_window = 100
+                idx_prev = max(0, i - half_window)
+                idx_next = min(len(trajectory) - 1, i + half_window)
+
+                x_prev, y_prev = trajectory[idx_prev, :2]
+                x_next, y_next = trajectory[idx_next, :2]
+
+                raw_yaw = self.get_yaw_from_path((x_prev, y_prev), (x_next, y_next))
+                raw_yaw = self.normalize_angle(raw_yaw)
+
+                if yaw_prev is None:
+                    yaw = raw_yaw
                 else:
-                   yaw = self.get_yaw_from_path(trajectory[i - num_traj_skip, :2], trajectory[i, :2])
-                    # yaw = 0
-                # y += y_offset  # Adjust y position by y_offset
-                # if abs(yaw-yaw_prev) >= 0.1:
-                #     yaw = 
-                #     yaw += yaw_prev
-                #     yaw_prev = yaw
+                    delta_yaw = self.normalize_angle(raw_yaw - yaw_prev)
 
-                rospy.loginfo(f"Moving towards waypoint {i+1}: x={x}, y={y}, yaw={yaw}")
+                    if abs(delta_yaw) > flip_threshold:
+                        rospy.logwarn(f"Yaw flip detected at waypoint {i}: Δyaw = {np.degrees(delta_yaw):.2f}°")
 
-                # Compute control command
+                        if i + num_traj_skip < len(trajectory):
+                            interpolated_yaw = self.get_yaw_from_path(trajectory[i - num_traj_skip, :2],
+                                                                    trajectory[i + num_traj_skip, :2])
+                            interpolated_yaw = self.normalize_angle(interpolated_yaw)
+
+                            # RELATIVE unwrap based on yaw_prev
+                            delta_interp = self.normalize_angle(interpolated_yaw - yaw_prev)
+                            yaw = yaw_prev + delta_interp
+
+                            rospy.logwarn(f"Replacing yaw at index {i} with interpolated yaw from i-1 to i+1: Δyaw = {np.degrees(delta_interp):.2f}°")
+                        else:
+                            rospy.logwarn(f"Skipping yaw correction at end of path")
+                            yaw = yaw_prev  # fallback
+                    else:
+                        yaw = yaw_prev + delta_yaw
+
+                yaw = self.normalize_angle(yaw)
+                yaw_prev = yaw
+
+
+                rospy.loginfo(f"Waypoint {i+1}: x={x}, y={y}, yaw={np.degrees(yaw):.2f}°")
+
+                # Compute control
                 control_msg = self.compute_control(x, y, yaw)
-
-                # Update vehicle transform
                 target_location = carla.Location(x=x, y=y)
                 target_rotation = carla.Rotation(pitch=0.0, yaw=np.degrees(yaw), roll=0.0)
                 self.vehicle.set_transform(carla.Transform(target_location, target_rotation))
-                # x_prev = x
-                # y_prev = y
-                # Publish control command
                 pub.publish(control_msg)
 
+                # Draw direction arrow
+                self.draw_yaw_arrow(x, y, yaw, z=0.3, length=2.0, color=carla.Color(255, 0, 0), life_time=0.5)
+
+                # Draw future spheres
                 sphere_locations = []
-                for j in range(num_traj_skip, 11 * num_traj_skip, num_traj_skip):  # Skip points based on num_traj_skip
+                for j in range(num_traj_skip, 11 * num_traj_skip, num_traj_skip):
                     if i + j < len(trajectory):
                         sphere_location = trajectory[i + j].copy()
-                        sphere_location[1] += y_offset  # Add y_offset to the y-coordinate
+                        sphere_location[1] += y_offset
                         sphere_locations.append(sphere_location)
-                        
 
                 self.draw_circles(sphere_locations, z=0, life_time=0.5, color=carla.Color(0, 255, 0))
 
                 rate.sleep()
-
 
     def follow_trajectory(self, trajectory):
         """
