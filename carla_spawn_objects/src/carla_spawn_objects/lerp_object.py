@@ -127,7 +127,7 @@ def main():
                            help='Blueprint name for the dynamic actor (e.g., static.prop.Stack_Box_02_Prefab_01)')
     argparser.add_argument('--initial-transform-x', type=float, default=0.0,
                            help='Initial x position for spawning')
-    argparser.add_argument('--initial-transform-y', type=float, default=0.0,
+    argparser.add_argument('--initial-transform-y', type=float, default=-2.0,
                            help='Initial y position for spawning')
     argparser.add_argument('--initial-transform-z', type=float, default=0.0,
                            help='Initial z position for spawning')

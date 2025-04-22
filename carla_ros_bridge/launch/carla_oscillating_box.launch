@@ -6,13 +6,20 @@
   <arg name="sensor_config_name" default="tentmapcamera.json" doc="Filename of the JSON config in carla_spawn_objects/config/"/>
   
   <arg name="oscillate_object" doc="set to true to include motion of the object" default="false"/>
-
+  <arg name="box_follow_trajectory" doc="set to true to include motion of the object" default="true"/>
+  <arg name="spawn_ego_vehicle" doc="set to true to spawn the ego vehicle" default="True"/>
+  <arg name="ego_follow_traj" doc="set to true to move the ego vehicle" default="True"/>
 
   <include file="$(find carla_ros_bridge)/launch/carla_ros_bridge.launch">
     <arg name="synchronous_mode" value="true"/>
     <arg name="town" value="$(arg town)"/>
     <arg name="fixed_delta_seconds" value="0.05"/>
   </include>
+
+  <!-- Include vehcicle spawn launch file -->
+  <group if="$(arg spawn_ego_vehicle)">
+    <include file="$(find carla_spawn_objects)/launch/carla_example_ego_vehicle.launch"/>
+  </group>
 
   <!-- Run lerp_object.py -->
   <node pkg="carla_spawn_objects" type="lerp_object.py" name="lerp_object" output="screen" 
@@ -23,6 +30,11 @@
     <node pkg="carla_spawn_objects" type="oscillate_transform.py" name="oscillate_transform" output="screen"/>
   </group>
 
+  <!-- Run object_follow_traj.py -->
+  <group if="$(arg box_follow_trajectory)">
+    <node pkg="carla_spawn_objects" type="object_follow_traj.py" name="object_follow_traj" output="screen"/>
+  </group>
+
 
   <!-- include ROS sensors-->
   <group if="$(arg simulate_ros_sensors)">
@@ -30,5 +42,11 @@
       <param name="objects_definition_file" value="$(find carla_spawn_objects)/config/$(arg sensor_config_name)"/>
     </node>
   </group>
+
+  
+  <!-- Run dubinspath_visworks.py -->
+  <!-- <group if="$(arg ego_follow_traj)">
+    <node pkg="carla_ros_bridge" type="dubinspath_visworks.py" name="dubinspath_visworks" output="screen"/>
+  </group> -->
 
 </launch>

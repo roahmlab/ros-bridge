@@ -52,7 +52,7 @@ class VehicleController:
         for wpt in waypoints:
             wpt_t = wpt
             center = [wpt_t[0], wpt_t[1], z]
-            self.draw_circle_from_center(center=center, radius=1.0, color=color)
+            self.draw_circle_from_center(center=center, radius=1.5, color=color)
         
         return
     
@@ -143,6 +143,80 @@ class VehicleController:
     def set_vehicle(self, vehicle):
         self.vehicle = vehicle
 
+    def move_and_visualize(self, trajectory_file):
+        """
+        Moves the vehicle along a trajectory loaded from a .npz file and visualizes spheres
+        centered at the ego vehicle's position 10 time steps ahead.
+
+        Parameters:
+        ----------
+        trajectory_file : str
+            Path to the .npz file containing the trajectory as a numpy array of shape (num_times, 3),
+            where each row is (x, y, heading).
+        """
+        # Load trajectory from .npz file
+        data = np.load(trajectory_file)
+        trajectory = data['ego_traj']
+
+        pub = rospy.Publisher('/carla/ego_vehicle/vehicle_control_cmd', CarlaEgoVehicleControl, queue_size=10)
+        rospy.Subscriber('/carla/ego_vehicle/odometry', Odometry, self.odometry_callback)
+        rate = rospy.Rate(100)  # 20 Hz for responsive control
+
+        while not self.pose_received and not rospy.is_shutdown():
+            rospy.loginfo("Waiting for vehicle's current pose...")
+            rate.sleep()
+
+        if self.pose_received:
+            rospy.loginfo("Vehicle pose received. Starting movement.")
+
+            waypoint_threshold = 1.0  # Distance threshold to consider waypoint reached
+            x_prev = trajectory[0,0]
+            y_prev = trajectory[0,1]
+            # yaw_prev = trajectory[i,2]
+            num_traj_skip = 1  # Number of waypoints to skip in the trajectory
+            y_offset = -2.0
+            for i in range(1, len(trajectory), num_traj_skip):  # Skip waypoints based on num_traj_skip
+                
+                x, y = trajectory[i,:2]
+                y += y_offset  # Adjust y position by y_offset
+                if i == 0:
+                   yaw = 0
+                else:
+                   yaw = self.get_yaw_from_path(trajectory[i - num_traj_skip, :2], trajectory[i, :2])
+                    # yaw = 0
+                # y += y_offset  # Adjust y position by y_offset
+                # if abs(yaw-yaw_prev) >= 0.1:
+                #     yaw = 
+                #     yaw += yaw_prev
+                #     yaw_prev = yaw
+
+                rospy.loginfo(f"Moving towards waypoint {i+1}: x={x}, y={y}, yaw={yaw}")
+
+                # Compute control command
+                control_msg = self.compute_control(x, y, yaw)
+
+                # Update vehicle transform
+                target_location = carla.Location(x=x, y=y)
+                target_rotation = carla.Rotation(pitch=0.0, yaw=np.degrees(yaw), roll=0.0)
+                self.vehicle.set_transform(carla.Transform(target_location, target_rotation))
+                # x_prev = x
+                # y_prev = y
+                # Publish control command
+                pub.publish(control_msg)
+
+                sphere_locations = []
+                for j in range(num_traj_skip, 11 * num_traj_skip, num_traj_skip):  # Skip points based on num_traj_skip
+                    if i + j < len(trajectory):
+                        sphere_location = trajectory[i + j].copy()
+                        sphere_location[1] += y_offset  # Add y_offset to the y-coordinate
+                        sphere_locations.append(sphere_location)
+                        
+
+                self.draw_circles(sphere_locations, z=0, life_time=0.5, color=carla.Color(0, 255, 0))
+
+                rate.sleep()
+
+
     def follow_trajectory(self, trajectory):
         """
         Follows a trajectory defined by waypoints for an SE2 mobile robot.
@@ -188,20 +262,39 @@ class VehicleController:
         if self.pose_received:
             rospy.loginfo("Vehicle pose received. Starting movement.")
 
-            # Define the hardcoded waypoints (skip the first as instructed)
-            # Waypoints are in SE2 so (x,y,yaw)
-            waypoints = [
-                (-30.96, 0.00, 0),
-                (-20.68, 0.00, 0),
-                (-10.00, 0.00, 0),
-                (0.00,  0.00, 0),
-                (10.00,  0.00, 0),
-                (20.00,  0.00, 0),
-                (30.00,  0.00, 0),
-                (40.00,  0.00, 0)
-            ]
+            # # Define the hardcoded waypoints (skip the first as instructed)
+            # # Waypoints are in SE2 so (x,y,yaw)
+            # waypoints = [
+            #     (-30.96, 0.00, 0),
+            #     (-20.68, 0.00, 0),
+            #     (-10.00, 0.00, 0),
+            #     (0.00,  0.00, 0),
+            #     (10.00,  0.00, 0),
+            #     (20.00,  0.00, 0),
+            #     (30.00,  0.00, 0),
+            #     (40.00,  0.00, 0)
+            # ]
 
-            turning_radius = 2.6  # Adjust as needed
+            data = np.load('/home/carla/PythonExamples/Mcity_trajectories.npz')
+            trajectory = data['ego_traj']
+
+            # Set the discretization level (e.g., every 40 points)
+            discretization_level = 100
+
+            # Initialize the waypoints list
+            waypoints = []
+
+            # Iterate through the trajectory with the specified discretization level
+            for i in range(0, len(trajectory), discretization_level):
+                # Get the current point
+                x, y = trajectory[i, :2]  # Assuming trajectory is an Nx2 or Nx3 array
+                y_offset = -2.0
+                y += y_offset  # Adjust y position by y_offset
+
+                # Append the waypoint as (x, y, yaw)
+                waypoints.append((x, y, 0))
+
+            turning_radius = 2  # Adjust as needed
             waypoint_threshold = 1.0  # Distance threshold to consider waypoint reached
             
             # Visualize the path waypoints as green dots
@@ -308,7 +401,9 @@ def main():
         else:
             rospy.logerr("No forklift vehicle found.")
 
-        vehicle_controller.start_moving()
+        # vehicle_controller.start_moving()
+        vehicle_controller.move_and_visualize('/home/carla/PythonExamples/Mcity_trajectories.npz')
+
     except rospy.ROSInterruptException:
         pass
 
