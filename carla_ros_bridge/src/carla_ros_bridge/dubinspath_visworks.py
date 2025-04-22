@@ -155,6 +155,12 @@ class VehicleController:
     def set_vehicle(self, vehicle):
         self.vehicle = vehicle
 
+    def lerp(start, end, fraction):
+    
+        x=start.x + (end.x - start.x) * fraction,
+        y=start.y + (end.y - start.y) * fraction,
+        z=start.z + (end.z - start.z) * fraction
+
     def move_and_visualize(self, trajectory_file):
         """
         Moves the vehicle along a trajectory loaded from a .npz file and visualizes spheres
@@ -162,10 +168,16 @@ class VehicleController:
         """
         data = np.load(trajectory_file)
         trajectory = data['ego_traj']
+        y_offset = -2.0
+        trajectory[:, 1] += y_offset
+
+        difference = np.max(np.diff(trajectory))
+        print(f"Max difference in trajectory: {difference}")
+        print('#############################################')
 
         pub = rospy.Publisher('/carla/ego_vehicle/vehicle_control_cmd', CarlaEgoVehicleControl, queue_size=10)
         rospy.Subscriber('/carla/ego_vehicle/odometry', Odometry, self.odometry_callback)
-        rate = rospy.Rate(100)
+        rate = rospy.Rate(5)
 
         while not self.pose_received and not rospy.is_shutdown():
             rospy.loginfo("Waiting for vehicle's current pose...")
@@ -174,14 +186,14 @@ class VehicleController:
         if self.pose_received:
             rospy.loginfo("Vehicle pose received. Starting movement.")
 
-            num_traj_skip = 1
-            y_offset = -2.0
+            num_traj_skip = 20
+            duration = 1/(100/num_traj_skip) 
+            spheres_skip = 30
             yaw_prev = None
             flip_threshold = np.radians(20)  # 90 degrees
 
             for i in range(1, len(trajectory) - 1, num_traj_skip):  # leave room to access i+1
                 x, y = trajectory[i, :2]
-                y += y_offset
 
                 # Windowed yaw smoothing
                 half_window = 100
@@ -236,13 +248,13 @@ class VehicleController:
 
                 # Draw future spheres
                 sphere_locations = []
-                for j in range(num_traj_skip, 11 * num_traj_skip, num_traj_skip):
+                for j in range(spheres_skip, 11 * spheres_skip, spheres_skip):
                     if i + j < len(trajectory):
                         sphere_location = trajectory[i + j].copy()
-                        sphere_location[1] += y_offset
+                        # sphere_location[1] += y_offset
                         sphere_locations.append(sphere_location)
 
-                self.draw_circles(sphere_locations, z=0, life_time=0.5, color=carla.Color(0, 255, 0))
+                self.draw_circles(sphere_locations, z=0, life_time=0.5, color=carla.Color(200, 0, 200))
 
                 rate.sleep()
 
@@ -431,8 +443,8 @@ def main():
             rospy.logerr("No forklift vehicle found.")
 
         # vehicle_controller.start_moving()
-        vehicle_controller.move_and_visualize('/home/carla/PythonExamples/Mcity_trajectories.npz')
-
+        vehicle_controller.move_and_visualize('/home/carla/PythonExamples/Mcity_trajectories_postprocess.npz')
+        
     except rospy.ROSInterruptException:
         pass
 

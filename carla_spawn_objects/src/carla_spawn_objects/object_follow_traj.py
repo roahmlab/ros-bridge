@@ -10,14 +10,21 @@ def move_objects():
     rate = rospy.Rate(10)  # 10 Hz
 
     start_time = rospy.Time.now().to_sec()
+    # while start_time != 0.0:
+    #     start_time = rospy.Time.now().to_sec()
+    #     rate.sleep()
+
     while not rospy.is_shutdown():
-        t = rospy.Time.now().to_sec() - start_time
-        t_wait = 20.0
-        if t < 10.0:
-            x_position = 0.0
+        t = rospy.Time.now().to_sec() - start_time   
+        # x_position = 2.0 - 0.5*(t)
+        
+        start_x = 2.0
+        t_wait = 15.0
+        if t < t_wait:
+            x_position = start_x
         # Move in straight line along x-axis
         else:    
-            x_position = 2.0 -0.5*(t-t_wait)
+            x_position = start_x - 0.5*(t-t_wait)
         
         transform_msg = TransformStamped()
         transform_msg.header = Header()

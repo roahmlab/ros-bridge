@@ -125,7 +125,7 @@ def main():
                            help='TCP port to listen to (default: 2000)')
     argparser.add_argument('--spawn-blueprint-name', type=str, required=True,
                            help='Blueprint name for the dynamic actor (e.g., static.prop.Stack_Box_02_Prefab_01)')
-    argparser.add_argument('--initial-transform-x', type=float, default=0.0,
+    argparser.add_argument('--initial-transform-x', type=float, default=2.0,
                            help='Initial x position for spawning')
     argparser.add_argument('--initial-transform-y', type=float, default=-2.0,
                            help='Initial y position for spawning')
@@ -149,6 +149,8 @@ def main():
     world = client.get_world()
 
     # Set up the initial transform for the actor based on command-line parameters
+    print("Initial transform parameters:")
+    print("X: {}, Y: {}, Z: {}".format(args.initial_transform_x, args.initial_transform_y, args.initial_transform_z))
     initial_location = carla.Location(x=args.initial_transform_x,
                                       y=args.initial_transform_y,
                                       z=args.initial_transform_z)

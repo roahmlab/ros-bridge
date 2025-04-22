@@ -1,0 +1,25 @@
+<launch>
+  <!-- Launch carla_ros_bridge with args -->
+ 
+  <arg name="oscillate_object" doc="set to true to include motion of the object" default="false"/>
+  <arg name="box_follow_trajectory" doc="set to true to include motion of the object" default="true"/>
+  <arg name="ego_follow_traj" doc="set to true to move the ego vehicle" default="true"/>
+  
+
+  <!-- Run oscillate_transform.py -->
+  <group if="$(arg oscillate_object)">
+    <node pkg="carla_spawn_objects" type="oscillate_transform.py" name="oscillate_transform" output="screen"/>
+  </group>
+
+  <!-- Run object_follow_traj.py -->
+  <group if="$(arg box_follow_trajectory)">
+    <node pkg="carla_spawn_objects" type="object_follow_traj.py" name="object_follow_traj" output="screen"/>
+  </group>
+
+
+  <!-- Run dubinspath_visworks.py -->
+  <group if="$(arg ego_follow_traj)">
+    <node pkg="carla_ros_bridge" type="dubinspath_visworks.py" name="dubinspath_visworks" output="screen"/>
+  </group>
+
+</launch>
