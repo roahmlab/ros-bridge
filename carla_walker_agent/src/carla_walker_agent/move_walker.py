@@ -10,8 +10,8 @@ def publish_waypoints():
     rospy.init_node('walker_waypoint_publisher', anonymous=True)
 
     # Publishers for waypoints and target speed
-    path_pub = rospy.Publisher('/carla/ego_vehicle/waypoints', Path, queue_size=1)
-    speed_pub = rospy.Publisher('/carla/ego_vehicle/target_speed', Float64, queue_size=1)
+    path_pub = rospy.Publisher('/carla/walker_01/waypoints', Path, queue_size=1, latch=True)   # ← latch!
+    speed_pub = rospy.Publisher('/carla/walker_01/target_speed', Float64, queue_size=1, latch=True)   # ← latch!
 
     # Create a Path message
     path = Path()
@@ -20,8 +20,22 @@ def publish_waypoints():
 
     # Define two waypoints
     points = [
-        (0.0, 0.0, 1.0),     # start at (0,0,1)
-        (1000.0, 1000.0, 1.0) # end at (1000,1000,1)
+        (-8.0, 2.0, 1.0),
+        (10.0, 10.0, 1.0),
+        (-8.0, 2.0, 1.0),
+        (10.0, 10.0, 1.0),
+        (-8.0, 2.0, 1.0),
+        (10.0, 10.0, 1.0),
+        (-8.0, 2.0, 1.0),
+        (10.0, 10.0, 1.0),
+        (-8.0, 2.0, 1.0),
+        (10.0, 10.0, 1.0),
+        (-8.0, 2.0, 1.0),
+        (10.0, 10.0, 1.0),        
+        (-8.0, 2.0, 1.0),
+        (10.0, 10.0, 1.0),
+        (-8.0, 2.0, 1.0),
+        (10.0, 10.0, 1.0)
     ]
 
     # Populate the Path message with PoseStamped messages
@@ -41,6 +55,7 @@ def publish_waypoints():
     # Publish the path and target speed once
     rospy.loginfo("Publishing waypoints path.")
     path_pub.publish(path)
+    
 
     target_speed = Float64()
     target_speed.data = 1.0  # target speed of 1

@@ -35,7 +35,7 @@ class CarlaWalkerAgent(CompatibleNode):
         """
         super(CarlaWalkerAgent, self).__init__('carla_walker_agent')
 
-        role_name = self.get_param("role_name", "ego_vehicle")
+        role_name = self.get_param("role_name", "walker_01")
         self._target_speed = self.get_param("target_speed", 2.0)
 
         self._route_assigned = False
