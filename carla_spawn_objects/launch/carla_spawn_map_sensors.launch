@@ -1,0 +1,13 @@
+<!-- -->
+<launch>
+  <arg name="objects_definition_file" default='$(find carla_spawn_objects)/config/map_objects.json'/>
+]  <arg name="spawn_sensors_only" default="true"/>
+
+  <arg name="control_id" default="control"/>
+
+  <include file="$(find carla_spawn_objects)/launch/carla_spawn_objects.launch">
+    <arg name="objects_definition_file" value='$(arg objects_definition_file)'/>
+    <arg name="spawn_sensors_only" value="$(arg spawn_sensors_only)" />
+  </include>
+
+</launch>

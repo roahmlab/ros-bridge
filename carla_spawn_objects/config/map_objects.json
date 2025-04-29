@@ -1,0 +1,86 @@
+{   
+    "objects": [
+        {
+            "type": "sensor.pseudo.traffic_lights",
+            "id": "traffic_lights",
+            "spawn_point": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0,
+				"roll": 0.0,
+				"pitch": 0.0,
+				"yaw": 0.0
+            }
+        },
+        {
+            "type": "sensor.pseudo.objects",
+            "id": "objects",
+            "spawn_point": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0,
+				"roll": 0.0,
+				"pitch": 0.0,
+				"yaw": 0.0
+            }
+        },
+        {
+            "type": "sensor.pseudo.actor_list",
+            "id": "actor_list",
+            "spawn_point": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0,
+				"roll": 0.0,
+				"pitch": 0.0,
+				"yaw": 0.0
+            }
+        },
+        {
+            "type": "sensor.pseudo.markers",
+            "id": "markers",
+            "spawn_point": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0,
+				"roll": 0.0,
+				"pitch": 0.0,
+				"yaw": 0.0
+            }
+        },
+        {
+            "type": "sensor.pseudo.opendrive_map",
+            "id": "map",
+            "spawn_point": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0,
+				"roll": 0.0,
+				"pitch": 0.0,
+				"yaw": 0.0
+            }
+        },
+        {
+            "type": "sensor.camera.rgb",
+            "id": "map_camera_video",
+            "spawn_point": {
+                "x": -11.0, 
+                "y": 2.0, 
+                "z": 4.5,
+				"roll": 0.0000,
+				"pitch": 5.6786,
+				"yaw": 0.0000
+            },
+            "image_size_x": 2560,
+            "image_size_y": 1440,
+            "fov": 120.0,
+            "attached_objects": [
+                {
+					"type": "actor.pseudo.control",
+					"id": "control"
+				}
+            ]
+        }       
+            
+    ]
+}
