@@ -209,31 +209,7 @@ def main():
 
     # 2) Start building the "objects" list with pseudo sensors (traffic lights, objects, etc.)
     objects_list = [
-        {
-            "type": "sensor.pseudo.traffic_lights",
-            "id": "traffic_lights",
-            "spawn_point": {"x": 0.0, "y": 0.0, "z": 1.0}
-        },
-        {
-            "type": "sensor.pseudo.objects",
-            "id": "objects",
-            "spawn_point": {"x": 0.0, "y": 0.0, "z": 1.0}
-        },
-        {
-            "type": "sensor.pseudo.actor_list",
-            "id": "actor_list",
-            "spawn_point": {"x": 0.0, "y": 0.0, "z": 1.0}
-        },
-        {
-            "type": "sensor.pseudo.markers",
-            "id": "markers",
-            "spawn_point": {"x": 0.0, "y": 0.0, "z": 1.0}
-        },
-        {
-            "type": "sensor.pseudo.opendrive_map",
-            "id": "map",
-            "spawn_point": {"x": 0.0, "y": 0.0, "z": 1.0}
-        }
+
     ]
 
     # We'll keep a simple function to index into camera_settings safely

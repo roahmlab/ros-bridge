@@ -2,8 +2,7 @@
     "objects": [
         {
             "type": "walker.pedestrian.0004",
-            "id": "walker_01",
-            "spawn_point": {"x": -8.0, "y": 2.0, "z": 0.40, "roll": 0.0, "pitch": 0.0, "yaw": 0.0},
+            "id": "walker_03",
             "sensors": 
             [
                 {

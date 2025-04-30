@@ -11,7 +11,12 @@
   <arg name="ego_follow_traj" doc="set to true to move the ego vehicle" default="false"/>
   <arg name="enable_rviz" doc="Set to true to launch RViz" default="true"/>
   <arg name="rviz_config" default="$(find carla_ros_bridge)/rviz/default_config.rviz" doc="Path to the RViz configuration file"/>
-  
+  <arg name="spawn_map_sensors" doc="set to true to spawn the map sensors (these are required)" default="True"/>
+
+  <arg name="spawn_camera_control" doc="set to true to control the camera via pygame" default="True"/>
+  <arg name="spawn_walker_control" doc="set to true to control the walker via pygame" default="True"/>
+  <arg name="spawn_ego_control" doc="set to true to spawn the ego vehicle via pygame" default="True"/>
+
 
   <include file="$(find carla_ros_bridge)/launch/carla_ros_bridge.launch">
     <arg name="synchronous_mode" value="true"/>
@@ -19,9 +24,14 @@
     <arg name="fixed_delta_seconds" value="0.05"/>
   </include>
 
+  <group if="$(arg spawn_map_sensors)">
+    <include file="$(find carla_spawn_objects)/launch/carla_spawn_map_sensors.launch"/>
+  </group>
+
   <!-- Include vehcicle spawn launch file -->
   <group if="$(arg spawn_ego_vehicle)">
     <include file="$(find carla_spawn_objects)/launch/carla_example_ego_vehicle.launch"/>
+
   </group>
 
   <!-- Run lerp_object.py -->
@@ -63,14 +73,14 @@
 
   <group if="$(arg spawn_walker)">
 
-    <!-- 1. Spawn a single pedestrian in CARLA -->
-  <node pkg="carla_spawn_objects" type="carla_spawn_objects.py"
-        name="spawn_from_config" output="screen">
-    <param name="objects_definition_file"
-           value="$(find carla_spawn_objects)/config/walker_01.json"/>
-    <!-- six comma-separated values: x,y,z,roll,pitch,yaw -->
-    <param name="spawn_point_walker_01" value="-2.0,4.0,0.4,0,0,90"/>
-  </node>
+  <arg name="objects_definition_file" default='$(find carla_spawn_objects)/config/walker_01.json'/>
+]  <arg name="spawn_sensors_only" default="false"/>
+
+  <include file="$(find carla_spawn_objects)/launch/carla_spawn_objects.launch">
+    <arg name="objects_definition_file" value='$(arg objects_definition_file)'/>
+    <arg name="spawn_sensors_only" value="$(arg spawn_sensors_only)" />
+  </include>
+
 
     <!-- 2. Start the control agent that follows a Path -->
     <node pkg="carla_walker_agent" type="carla_walker_agent.py"
@@ -80,10 +90,27 @@
       <param name="target_speed" value="0.8"/>
       <param name="mode"         value="vehicle"/>
     </node>
+  </group>
 
-    <!-- 3. Publish an example path + speed -->
-    <node pkg="carla_walker_agent" type="walker_keyboard_control.py"
+
+  <!-- Spawn the PyGame Terminals -->
+
+  <group if="$(arg spawn_camera_control)">
+    <node pkg="carla_spawn_objects" type="camera_pygame_teleop.py"
+          name="move_camera"
+          output="screen"/>
+  </group>
+
+  <group if="$(arg spawn_walker_control)">
+    <node pkg="carla_walker_agent" type="walker_pygame_teleop.py"
           name="move_walker"
           output="screen"/>
   </group>
+
+  <group if="$(arg spawn_ego_control)">
+    <node pkg="carla_spawn_objects" type="ego_pygame_teleop.py"
+          name="move_ego"
+          output="screen"/>
+  </group>
+
 </launch>

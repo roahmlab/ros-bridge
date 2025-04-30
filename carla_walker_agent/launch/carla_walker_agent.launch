@@ -1,13 +1,189 @@
-<!-- -->
 <launch>
-  <arg name="role_name" default="ego_vehicle"/>
-  <arg name="target_speed" default="2"/>
-  <arg name="mode" default="vehicle"/>
+  <!-- Enable flags for each walker -->
+  <arg name="enable_walker_01" default="true"/>
+  <arg name="enable_walker_02" default="false"/>
+  <arg name="enable_walker_03" default="false"/>
+  <arg name="enable_walker_04" default="false"/>
+  <arg name="enable_walker_05" default="false"/>
+  <arg name="enable_walker_06" default="false"/>
+  <arg name="enable_walker_07" default="false"/>
+  <arg name="enable_walker_08" default="false"/>
+  <arg name="enable_walker_09" default="false"/>
+  <arg name="enable_walker_10" default="false"/>
+  <arg name="enable_walker_11" default="false"/>
+  <arg name="enable_walker_12" default="false"/>
 
-  <node pkg="carla_walker_agent" type="carla_walker_agent.py" name="carla_walker_agent_$(arg role_name)" output="screen">
-    <param name="target_speed" value="$(arg target_speed)" />
-    <param name="role_name" value="$(arg role_name)" />
-    <param name="mode" value="$(arg mode)" />
-  </node>
+  <!-- Loop through each walker configuration -->
+  <!-- To activate a walker, set its corresponding enable_walker_XX arg to true -->
+
+  <!-- Walker 01 -->
+  <group if="$(arg enable_walker_01)">
+    <!-- Spawn walker 01 -->
+    <node pkg="carla_spawn_objects" type="carla_spawn_objects.py" name="spawn_walker_01" output="screen">
+      <param name="objects_definition_file" value="$(find your_pkg)/config/walker_01.json"/>
+    </node>
+    <!-- Agent for walker 01 -->
+    <node pkg="carla_walker_agent" type="carla_walker_agent.py" name="agent_walker_01" output="screen">
+      <param name="role_name" value="walker_01"/>
+      <param name="target_speed" value="1.2"/>
+    </node>
+    <!-- Teleop for walker 01 -->
+    <node pkg="your_pkg" type="walker_pygame_teleop.py" name="teleop_walker_01" output="screen">
+      <param name="walker_role_name" value="walker_01"/>
+    </node>
+  </group>
+
+  <!-- Walker 02 -->
+  <group if="$(arg enable_walker_02)">
+    <node pkg="carla_spawn_objects" type="carla_spawn_objects.py" name="spawn_walker_02" output="screen">
+      <param name="objects_definition_file" value="$(find your_pkg)/config/walker_02.json"/>
+    </node>
+    <node pkg="carla_walker_agent" type="carla_walker_agent.py" name="agent_walker_02" output="screen">
+      <param name="role_name" value="walker_02"/>
+      <param name="target_speed" value="1.2"/>
+    </node>
+    <node pkg="your_pkg" type="walker_pygame_teleop.py" name="teleop_walker_02" output="screen">
+      <param name="walker_role_name" value="walker_02"/>
+    </node>
+  </group>
+
+  <!-- Walker 03 -->
+  <group if="$(arg enable_walker_03)">
+    <node pkg="carla_spawn_objects" type="carla_spawn_objects.py" name="spawn_walker_03" output="screen">
+      <param name="objects_definition_file" value="$(find your_pkg)/config/walker_03.json"/>
+    </node>
+    <node pkg="carla_walker_agent" type="carla_walker_agent.py" name="agent_walker_03" output="screen">
+      <param name="role_name" value="walker_03"/>
+      <param name="target_speed" value="1.2"/>
+    </node>
+    <node pkg="your_pkg" type="walker_pygame_teleop.py" name="teleop_walker_03" output="screen">
+      <param name="walker_role_name" value="walker_03"/>
+    </node>
+  </group>
+
+  <!-- Walker 04 -->
+  <group if="$(arg enable_walker_04)">
+    <node pkg="carla_spawn_objects" type="carla_spawn_objects.py" name="spawn_walker_04" output="screen">
+      <param name="objects_definition_file" value="$(find your_pkg)/config/walker_04.json"/>
+    </node>
+    <node pkg="carla_walker_agent" type="carla_walker_agent.py" name="agent_walker_04" output="screen">
+      <param name="role_name" value="walker_04"/>
+      <param name="target_speed" value="1.2"/>
+    </node>
+    <node pkg="your_pkg" type="walker_pygame_teleop.py" name="teleop_walker_04" output="screen">
+      <param name="walker_role_name" value="walker_04"/>
+    </node>
+  </group>
+
+  <!-- Walker 05 -->
+  <group if="$(arg enable_walker_05)">
+    <node pkg="carla_spawn_objects" type="carla_spawn_objects.py" name="spawn_walker_05" output="screen">
+      <param name="objects_definition_file" value="$(find your_pkg)/config/walker_05.json"/>
+    </node>
+    <node pkg="carla_walker_agent" type="carla_walker_agent.py" name="agent_walker_05" output="screen">
+      <param name="role_name" value="walker_05"/>
+      <param name="target_speed" value="1.2"/>
+    </node>
+    <node pkg="your_pkg" type="walker_pygame_teleop.py" name="teleop_walker_05" output="screen">
+      <param name="walker_role_name" value="walker_05"/>
+    </node>
+  </group>
+
+  <!-- Walker 06 -->
+  <group if="$(arg enable_walker_06)">
+    <node pkg="carla_spawn_objects" type="carla_spawn_objects.py" name="spawn_walker_06" output="screen">
+      <param name="objects_definition_file" value="$(find your_pkg)/config/walker_06.json"/>
+    </node>
+    <node pkg="carla_walker_agent" type="carla_walker_agent.py" name="agent_walker_06" output="screen">
+      <param name="role_name" value="walker_06"/>
+      <param name="target_speed" value="1.2"/>
+    </node>
+    <node pkg="your_pkg" type="walker_pygame_teleop.py" name="teleop_walker_06" output="screen">
+      <param name="walker_role_name" value="walker_06"/>
+    </node>
+  </group>
+
+  <!-- Walker 07 -->
+  <group if="$(arg enable_walker_07)">
+    <node pkg="carla_spawn_objects" type="carla_spawn_objects.py" name="spawn_walker_07" output="screen">
+      <param name="objects_definition_file" value="$(find your_pkg)/config/walker_07.json"/>
+    </node>
+    <node pkg="carla_walker_agent" type="carla_walker_agent.py" name="agent_walker_07" output="screen">
+      <param name="role_name" value="walker_07"/>
+      <param name="target_speed" value="1.2"/>
+    </node>
+    <node pkg="your_pkg" type="walker_pygame_teleop.py" name="teleop_walker_07" output="screen">
+      <param name="walker_role_name" value="walker_07"/>
+    </node>
+  </group>
+
+  <!-- Walker 08 -->
+  <group if="$(arg enable_walker_08)">
+    <node pkg="carla_spawn_objects" type="carla_spawn_objects.py" name="spawn_walker_08" output="screen">
+      <param name="objects_definition_file" value="$(find your_pkg)/config/walker_08.json"/>
+    </node>
+    <node pkg="carla_walker_agent" type="carla_walker_agent.py" name="agent_walker_08" output="screen">
+      <param name="role_name" value="walker_08"/>
+      <param name="target_speed" value="1.2"/>
+    </node>
+    <node pkg="your_pkg" type="walker_pygame_teleop.py" name="teleop_walker_08" output="screen">
+      <param name="walker_role_name" value="walker_08"/>
+    </node>
+  </group>
+
+  <!-- Walker 09 -->
+  <group if="$(arg enable_walker_09)">
+    <node pkg="carla_spawn_objects" type="carla_spawn_objects.py" name="spawn_walker_09" output="screen">
+      <param name="objects_definition_file" value="$(find your_pkg)/config/walker_09.json"/>
+    </node>
+    <node pkg="carla_walker_agent" type="carla_walker_agent.py" name="agent_walker_09" output="screen">
+      <param name="role_name" value="walker_09"/>
+      <param name="target_speed" value="1.2"/>
+    </node>
+    <node pkg="your_pkg" type="walker_pygame_teleop.py" name="teleop_walker_09" output="screen">
+      <param name="walker_role_name" value="walker_09"/>
+    </node>
+  </group>
+
+  <!-- Walker 10 -->
+  <group if="$(arg enable_walker_10)">
+    <node pkg="carla_spawn_objects" type="carla_spawn_objects.py" name="spawn_walker_10" output="screen">
+      <param name="objects_definition_file" value="$(find your_pkg)/config/walker_10.json"/>
+    </node>
+    <node pkg="carla_walker_agent" type="carla_walker_agent.py" name="agent_walker_10" output="screen">
+      <param name="role_name" value="walker_10"/>
+      <param name="target_speed" value="1.2"/>
+    </node>
+    <node pkg="your_pkg" type="walker_pygame_teleop.py" name="teleop_walker_10" output="screen">
+      <param name="walker_role_name" value="walker_10"/>
+    </node>
+  </group>
+
+  <!-- Walker 11 -->
+  <group if="$(arg enable_walker_11)">
+    <node pkg="carla_spawn_objects" type="carla_spawn_objects.py" name="spawn_walker_11" output="screen">
+      <param name="objects_definition_file" value="$(find your_pkg)/config/walker_11.json"/>
+    </node>
+    <node pkg="carla_walker_agent" type="carla_walker_agent.py" name="agent_walker_11" output="screen">
+      <param name="role_name" value="walker_11"/>
+      <param name="target_speed" value="1.2"/>
+    </node>
+    <node pkg="your_pkg" type="walker_pygame_teleop.py" name="teleop_walker_11" output="screen">
+      <param name="walker_role_name" value="walker_11"/>
+    </node>
+  </group>
+
+  <!-- Walker 12 -->
+  <group if="$(arg enable_walker_12)">
+    <node pkg="carla_spawn_objects" type="carla_spawn_objects.py" name="spawn_walker_12" output="screen">
+      <param name="objects_definition_file" value="$(find your_pkg)/config/walker_12.json"/>
+    </node>
+    <node pkg="carla_walker_agent" type="carla_walker_agent.py" name="agent_walker_12" output="screen">
+      <param name="role_name" value="walker_12"/>
+      <param name="target_speed" value="1.2"/>
+    </node>
+    <node pkg="your_pkg" type="walker_pygame_teleop.py" name="teleop_walker_12" output="screen">
+      <param name="walker_role_name" value="walker_12"/>
+    </node>
+  </group>
 </launch>
-

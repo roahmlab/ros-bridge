@@ -20,7 +20,6 @@
   <!-- enable/disable the registration of all sensors. If disabled, only sensors
   spawned by the bridge are registered -->
   <arg name='register_all_sensors' default='True'/>
-  <arg name="spawn_map_sensors" doc="set to true to spawn the map sensors (these are required)" default="True"/>
 
   <!-- 
     the role name of the vehicles that acts as ego vehicle for this ros bridge instance
@@ -41,9 +40,5 @@
     <param name="town" value="$(arg town)"/>
     <param name="ego_vehicle_role_name" value="$(arg ego_vehicle_role_name)"/>
   </node>
-  
-  <group if="$(arg spawn_map_sensors)">
-    <include file="$(find carla_spawn_objects)/launch/carla_spawn_map_sensors.launch"/>
-  </group>
 
 </launch>

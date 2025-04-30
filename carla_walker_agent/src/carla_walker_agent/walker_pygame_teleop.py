@@ -26,7 +26,6 @@ _KEY_TEXT = [
     "W/S  : forward / back",
     "A/D  : rotate left / right",
     "J/L  : strafe left / right",
-    "C    : crouch",
     "SPACE: jump",
     "ESC/Q: quit"
 ]
@@ -39,7 +38,6 @@ class WalkerTeleop:
         self.bridge = CvBridge()
 
         self.heading = 0.0
-        self.crouch  = False
         self.image   = None
         self.img_lock= threading.Lock()
 
@@ -101,11 +99,6 @@ class WalkerTeleop:
 
         if keys[pygame.K_SPACE]:
             ctrl.jump = True
-        if keys[pygame.K_c]:
-            ctrl.crouch = True
-            self.crouch = True
-        else:
-            self.crouch = False
 
         ctrl.direction = dirv
         self.pub.publish(ctrl)
@@ -115,6 +108,7 @@ class WalkerTeleop:
         with self.img_lock:
             frame = self.image.copy() if self.image is not None else np.zeros((480,640,3), dtype=np.uint8)
         surf = pygame.surfarray.make_surface(np.flipud(frame))           # cv img → Surface
+        surf = pygame.transform.rotate(surf, 90)
         self.screen.blit(pygame.transform.scale(surf, self.screen.get_size()), (0,0))
 
         # semi-transparent overlay for key-map
@@ -129,7 +123,7 @@ class WalkerTeleop:
             y += 18
 
         # status line
-        status = f"heading {math.degrees(self.heading):5.1f}°   crouch:{self.crouch}"
+        status = f"heading {math.degrees(self.heading):5.1f}° "
         txt = self.font.render(status, True, (0,255,0))
         self.screen.blit(txt, (10, y+10))
 

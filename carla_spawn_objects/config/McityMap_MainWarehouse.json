@@ -1,72 +1,7 @@
 {   
     "objects": 
     [
-        {
-            "type": "sensor.pseudo.traffic_lights",
-            "id": "traffic_lights",
-            "spawn_point": {
-                "x": 0.0, 
-                "y": 0.0, 
-                "z": 1.0
-            }
-        },
-        {
-            "type": "sensor.pseudo.objects",
-            "id": "objects",
-            "spawn_point": {
-                "x": 0.0, 
-                "y": 0.0, 
-                "z": 1.0
-            }
-        },
-        {
-            "type": "sensor.pseudo.actor_list",
-            "id": "actor_list",
-            "spawn_point": {
-                "x": 0.0, 
-                "y": 0.0, 
-                "z": 1.0
-            }
-        },
-        {
-            "type": "sensor.pseudo.markers",
-            "id": "markers",
-            "spawn_point": {
-                "x": 0.0, 
-                "y": 0.0, 
-                "z": 1.0
-            }
-        },
-        {
-            "type": "sensor.pseudo.opendrive_map",
-            "id": "map",
-            "spawn_point": {
-                "x": 0.0, 
-                "y": 0.0, 
-                "z": 1.0
-            }
-        },
-        {
-            "type": "sensor.camera.rgb",
-            "id": "map_camera_video",
-            "spawn_point": {
-                "x": -4.0, 
-                "y": 0.0, 
-                "z": 1.0,
-		    "roll": 0.0000,
-		    "pitch": 5.6786,
-		    "yaw": -7.1210
-            },
-            "image_size_x": 1280,
-            "image_size_y": 720,
-            "fov": 120.0,
-            "attached_objects": [
-                {
-					"type": "actor.pseudo.control",
-					"id": "control"
-				}
-            ]
-        }
+
     
     ]
 }
